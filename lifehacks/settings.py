@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'django_extensions',
     'cloudinary_storage',
     'cloudinary',
     'crispy_bootstrap5',
@@ -55,6 +56,7 @@ INSTALLED_APPS = [
     #apps
 
     'home',
+    'hacks',
 ]
 
 SITE_ID = 1
@@ -68,7 +70,7 @@ DJRICHTEXTFIELD_CONFIG = {
             ['NumberedList', 'BulletedList'], ['Undo', 'Redo'],
             ['Maximize']
         ],
-        'format_tags': 'p;h1;h2;h3'
+        'Format_tags': 'h1;h2;h3'
     }
 }
 
