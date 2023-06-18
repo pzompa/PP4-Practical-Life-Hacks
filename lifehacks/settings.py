@@ -29,9 +29,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = [
-    '8000-pzompa-pp4practicallife-x89vc4kn2v2.ws-eu100.gitpod.io'
-]
+ALLOWED_HOSTS = ['8000-pzompa-pp4practicallife-x89vc4kn2v2.ws-eu100.gitpod.io']
+                
+
+CSRF_TRUSTED_ORIGINS = ['https://8000-pzompa-pp4practicallife-x89vc4kn2v2.ws-eu100.gitpod.io']
 
 
 # Application definition
@@ -44,10 +45,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+
     #apps
 
     'home',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -77,6 +85,14 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 WSGI_APPLICATION = 'lifehacks.wsgi.application'
@@ -122,6 +138,9 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+
+#Account setup
 
 
 # Static files (CSS, JavaScript, Images)
