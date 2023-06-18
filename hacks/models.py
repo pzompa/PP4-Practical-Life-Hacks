@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from djrichtextfield.models import RichTextField
-import django.utils.timezone as tz
+
 
 CATEGORY = ("choose your category", "Choose Your Category"),("beauty", "Beauty"), ("household", "Household"), ("health", "Health"), ("cleaning", "Cleaning"), ("others", "Others")
 
@@ -18,8 +18,24 @@ class Hack(models.Model):
 
 """To sort hacks search"""
 class Meta:
-    ordering = ['created_on']
+    ordering = ['-created_on']
     
 def __str__(self):
     return f"{self.title}"
 
+
+# class Comment(models.Model):
+#     """Model for Comment"""
+#     hack = models.ForeignKey(
+#         Hack, on_delete=models.CASCADE, related_name='comments')
+#     name = models.CharField(max_length=80)
+    
+#     body = models.TextField()
+#     created_on = models.DateTimeField(auto_now=True)
+
+#     class Meta:
+#         """ To display the comments by created_on in ascending order """
+#         ordering = ['created_on']
+
+#     def __str__(self):
+#         return f"Comment {self.body} by {self.name}"
