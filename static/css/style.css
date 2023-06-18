@@ -1,0 +1,81 @@
+{% load static %}
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
+
+/*Clear all formattings*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(252, 247, 242);
+}
+
+main {
+    flex: 1 0 auto;
+    background-color: rgb(252, 247, 242);
+} 
+
+h1, h2, h3, h4 ,h5, h6 {
+    font-family: 'Lato' , sans-serif;
+}
+
+/* Header*/
+
+.container-fluid {
+    background-color:#775395;
+    box-shadow: 1px 1px 5px 0 #d4c1c361;
+    
+}
+.nav-item {
+    text-transform: uppercase;
+}
+
+a.nav-link {
+    color: rgb(49, 44, 44);
+    color: black;
+    
+}
+
+.logo {
+    height: 10rem;
+    width: 20rem;
+    border-radius: 5%;
+}
+/* .form {
+    background-color: rgb(245, 239, 234);
+    color: black;
+    border-radius: 5px;
+    border: 2px solid grey; 
+}*/
+.active {
+    border-bottom: 1px solid rgb(6, 1, 9);
+    font-weight: bold;
+}
+
+/*Footer*/
+
+
+footer {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    background-color: #775395;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid;
+}
+.social-icon {
+    height: 2rem;
+    margin: 1rem;
+}
+
