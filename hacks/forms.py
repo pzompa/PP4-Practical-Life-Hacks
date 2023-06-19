@@ -10,24 +10,24 @@ class HackForm(forms.ModelForm):
     class Meta:
         model = Hack
         fields = [
+            "category",
             "title",
             "description",
             "ingredients",
+            "instructions",
             "image",
-            "category",
         ]
         widgets = {
-            "description": forms.Textarea(attrs={"rows": 5}),
-            "ingredients": RichTextWidget(),
-           
+             "ingredients": RichTextWidget(),
+            "description": forms.Textarea(attrs={"rows": 5}),           
         }
         labels = {
-            "title": "Hack Title",
+            "title": "Title",
             "description": "Description",
-            "ingredients": "Hack Ingredients",
-            "instructions": "Hack Instructions",
-            "image": "Hack Image",
-            "category": "Hack Category",
+            "ingredients": "Ingredients",
+            "instructions": "Instructions",
+            "image": "Image",
+            "category": "Category",
         }
 
 
