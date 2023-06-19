@@ -2,10 +2,8 @@ from django import forms
 from djrichtextfield.widgets import RichTextWidget
 from .models import Hack
 
-
+"""Form to create a recipe"""
 class HackForm(forms.ModelForm):
-    """Form to create a recipe"""
-
     ingredients = forms.CharField(widget=RichTextWidget())
     instructions = forms.CharField(widget=RichTextWidget())
 
@@ -40,7 +38,12 @@ class HackForm(forms.ModelForm):
 #     class Meta:
 #         """Get comment model, choose fields to display"""
 #         model = Comment
-#         fields = ('body',)
+#         fields = ('description', 'title')
+#       labels = {
+#       'title' : 'Hach Title',
+#       'comment' : 'Comment'}
+
+
 
 
 
