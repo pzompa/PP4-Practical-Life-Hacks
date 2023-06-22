@@ -1,5 +1,5 @@
 from django.urls.base import reverse
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView, DetailView
 from .models import Hack
 from .models import Comment
 from django import forms
@@ -10,7 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class CreateHack(LoginRequiredMixin, CreateView):
     model = Hack
     template_name = 'hacks/create_hack.html'
-    fields = ['title', 'description', 'category', 'ingredients','image']
+    fields = ['category','title','ingredients','description','image']
     success_url = '/hacks/'
 
     def form_valid(self, form):
@@ -29,4 +29,15 @@ class Comment(LoginRequiredMixin, CreateView):
         form.instance.created_by = self.request.user
         return super().form_valid(form)
 
+
+"""View all hacks"""
+class Hacks(ListView):
+    model = Hack
+    template_name = 'hacks/hacks.html'
+    context_object_name = 'hacks'
+
+# class Hack_Detail(DetailView):
+#     model = Hack
+#     template_name = 'hacks/hack_detail.html'
+#     context_object_name = 'hack'
 
