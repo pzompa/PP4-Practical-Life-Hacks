@@ -3,6 +3,8 @@ from djrichtextfield.widgets import RichTextWidget
 from .models import Hack
 
 """Form to create a recipe"""
+
+
 class HackForm(forms.ModelForm):
     ingredients = forms.CharField(widget=RichTextWidget())
     instructions = forms.CharField(widget=RichTextWidget())
@@ -18,8 +20,8 @@ class HackForm(forms.ModelForm):
             "image",
         ]
         widgets = {
-             "ingredients": RichTextWidget(),
-            "description": forms.Textarea(attrs={"rows": 5}),           
+            "ingredients": RichTextWidget(),
+            "description": forms.Textarea(attrs={"rows": 5}),
         }
         labels = {
             "title": "Title",
@@ -42,9 +44,3 @@ class HackForm(forms.ModelForm):
 #       labels = {
 #       'title' : 'Hach Title',
 #       'comment' : 'Comment'}
-
-
-
-
-
-
