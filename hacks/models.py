@@ -7,7 +7,7 @@ from djrichtextfield.models import RichTextField
 
 
 class Hack(models.Model):
-    CATEGORY = ("choose your category", "Choose Your Category"),("beauty", "Beauty"), ("household", "Household"), ("health", "Health"), ("cleaning", "Cleaning"), ("others", "Others")
+    CATEGORY = ("choose your category", "Choose Your Category"),("Beauty","beauty"), ("Household","household"), ("Health","health"), ("Cleaning","cleaning"), ("Others","others")
 
     title = models.CharField(max_length=200, null=False, blank=False)
     category = models.CharField(max_length=50, choices=CATEGORY, default="choose your category")
