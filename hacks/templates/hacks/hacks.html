@@ -9,7 +9,6 @@ Hacks
         Browse Latest Hacks
     </h1>
 </div>
-
 <div class="container d-flex-row flex-wrap justify-content-center">
     <hr class="home-break">
     <br>
@@ -27,14 +26,13 @@ Hacks
 
                 <div class="card-body pb-1">
                     <h5 class="card-title hack-detail-title text-truncate">{{ hack.title }}</h5>
-                    <h6 class="card-text">Category: {{hack.category}}</h6>
-                    <p class="card-text">Category: {{hack.description|truncatechars:50}}</p>
-                    <a href="{% url 'home' %}" aria-multiline="btn btn-outline-dark m-2">Find our more</a>
+                    <h6 class="card-text"><strong>Category: </strong>{{hack.category}}</h6>
+                    <p class="card-text"><strong>Description: </strong>{{hack.description| safe |truncatechars:50}}</p>
+                    <a href="{% url 'hack_detail' hack.id %}" aria-multiline="btn btn-outline-dark m-2">Find our more</a>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
 </div>
-
 {% endblock %}
