@@ -7,11 +7,11 @@ from djrichtextfield.models import RichTextField
 class Hack(models.Model):
     CATEGORY = (
         ("choose your category", "Choose Your Category"),
-        ("Beauty", "beauty"),
-        ("Household", "household"),
-        ("Health", "health"),
-        ("Cleaning", "cleaning"),
-        ("Others", "others"),
+        ("Beauty", "Beauty"),
+        ("Household", "Household"),
+        ("Health", "Health"),
+        ("Cleaning", "Cleaning"),
+        ("Others", "Others"),
     )
 
     title = models.CharField(max_length=200, null=False, blank=False)
@@ -44,7 +44,7 @@ class Comment(models.Model):
     # comment date
     created_on = models.DateTimeField(auto_now_add=True)
     # comment author
-    creater = models.ForeignKey(User, on_delete=models.CASCADE)
+    creator = models.ForeignKey(User, on_delete=models.CASCADE)
     # author = models.CharField(max_length=255)
     # comment for what Hack
     hack = models.ForeignKey(Hack, on_delete=models.CASCADE)

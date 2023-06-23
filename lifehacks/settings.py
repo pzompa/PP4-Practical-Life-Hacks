@@ -53,8 +53,8 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'crispy_forms',
     'djrichtextfield',
+    
     #apps
-
     'home',
     'hacks',
 ]
@@ -66,9 +66,10 @@ DJRICHTEXTFIELD_CONFIG = {
     'init_template': 'djrichtextfield/init/ckeditor.js',
     'settings': {
         'toolbar': [
-            ['Format', 'Bold', 'Italic', 'Underline'],
-            ['NumberedList', 'BulletedList'], ['Undo', 'Redo'],
-            ['Maximize']
+            {'name': 'styles', 'items': ['Format']},
+            {'name': 'basicstyles', 'items': ['Bold', 'Italic', 'Underline']},
+            {'name': 'paragraph', 'items': ['NumberedList', 'BulletedList']},
+            {'name': 'tools', 'items': ['Undo', 'Redo', 'Maximize']},
         ],
         'Format_tags': 'h1;h2;h3'
     }
