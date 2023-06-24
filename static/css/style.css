@@ -51,6 +51,55 @@ a.nav-link {
     border-radius: 5%;
 }
 
+/* Form */
+
+.form {
+    background-color: rgb(177, 166, 179);
+    margin: 3% auto;
+    width: 80%;
+    border-radius: 5px;
+}
+
+.linebreak {
+    border-bottom: 1px solid rgb(177, 166, 179);
+}
+
+.active {
+    border-bottom: 1px solid rgb(6, 1, 9);
+    font-weight: bold;
+}
+
+/* Hacks */
+
+.hack-tile{
+    font-size: 20px;
+}
+
+.hack-title:first-letter{
+    text-transform: capitalize;
+}
+
+.hack-detail-title:first-letter{
+    text-transform: capitalize;
+}
+
+.hack-detail-img {
+    max-height: 400px;
+    object-fit: cover;
+    width: 100%;
+    box-shadow: 1px 1px 5px 0 #d4c1c361;
+}
+
+.hack-detail-card {
+    border: 0.5px solid rgb(177, 166, 179);
+   
+}
+
+.hack-detail-background {
+    /* border: none; */
+    color: #886363;
+}
+
 /* Footer */
 
 footer {
@@ -62,6 +111,7 @@ footer {
     align-items: center;
     border-top: 1px solid;
 }
+
 .social-icon {
     height: 2rem;
     margin: 1rem;
