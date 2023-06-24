@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}
+Hack Detail - {{hack.title}}
+{% endblock %}
+
+{% block content%}
+
+<div class="container hack-detail-card">
+    <div class="d-flex flex-column">
+        <div class="hack-info mt-3 p-1">
+            {% if "placeholder" in hack.image.url %}
+            <img src="https://res.cloudinary.com/aliokeeffe/image/upload/v1656016833/placeholder_image_prqssg.jpg"
+                class="hack-detail-img" alt="placeholder image">
+            {% else %}
+            <img src=" {{ hack.image.url }}" alt="hack image" class="hack-detail-img">
+            {% endif %}
+        </div>
+
+
+        <div class="card-body hack-detail-outer py-3">
+            <h1 class="text-center hack-title hack-detail-background">{{ hack.title }}</h1>
+            <p class="text-center">Posted by: {{ hack.created_by }} on {{ hack.created_on }}</p>
+            <hr>
+        
+    
+      
+            <h5 class="hack-detail-background m-3"><strong>Category: </strong>{{ hack.category }}</h5>
+            <h6 class="hack-detail-background m-3"><strong>Ingredients:</strong></h6>
+            <p class="card-text m-4">
+                {{ hack.ingredients|safe }}
+            </p>
+            <h6 class="hack-detail-background m-3"><strong>Description:</strong></h6>
+            <p class="card-text m-4">
+                {{ hack.description|safe }}
+            </p>
+        </div>
+        <div class="d-flex flex-row justify-content-center">
+            {% if request.user == hack.created_by %}
+            <!-- <div class="text-center"> -->
+                <a href="{#}" class="btn btn-outline-dark m-2 ">Edit</a>
+                <a href="{% url 'delete_hack_confirm' hack.id %}" class="btn btn-outline-dark m-2">Delete</a>
+            <!-- </div> -->
+            {% endif %}
+            {% if user.is_authenticated %}
+            <button type="button" class="btn btn btn-outline-dark m-2">
+                Add to Favorite
+            </button>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}
