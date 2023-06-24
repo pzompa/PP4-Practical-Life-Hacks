@@ -1,12 +1,15 @@
 from django.urls.base import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
     CreateView, ListView, 
-    DetailView, DeleteView)
-from .models import Hack
-from .models import Comment
+    DetailView, DeleteView,
+    UpdateView)
 from django import forms
+from django.shortcuts import render
+from .models import Hack, Comment
+from django.views import View
 from .forms import HackForm
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+
 
 
 
@@ -46,6 +49,7 @@ class HackDetail(DetailView):
     template_name = "hacks/hack_detail.html"
     context_object_name = "hack"
 
+
 """Delete hack"""
 
 class DeleteHack(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -55,4 +59,18 @@ class DeleteHack(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         return self.request.user == self.get_object().created_by
     
+"""Edit Hack"""
+
+class EditHack(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    template_name= 'hacks/edit_hack.html'
+    model = Hack
+    form_class = HackForm
+    success_url = '/hacks/'
+
+    def test_func(self):
+        return self.request.user == self.get_object().created_by
+
+
+
+
 
