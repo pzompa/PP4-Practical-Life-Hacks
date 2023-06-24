@@ -1,10 +1,13 @@
 from django.urls.base import reverse
-from django.views.generic import CreateView, ListView, DetailView
+from django.views.generic import (
+    CreateView, ListView, 
+    DetailView, DeleteView)
 from .models import Hack
 from .models import Comment
 from django import forms
 from .forms import HackForm
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+
 
 
 class CreateHack(LoginRequiredMixin, CreateView):
@@ -42,3 +45,14 @@ class HackDetail(DetailView):
     model = Hack
     template_name = "hacks/hack_detail.html"
     context_object_name = "hack"
+
+"""Delete hack"""
+
+class DeleteHack(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Hack
+    success_url = '/hacks/'
+
+    def test_func(self):
+        return self.request.user == self.get_object().created_by
+    
+
