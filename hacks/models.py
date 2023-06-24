@@ -75,3 +75,10 @@ class Bookmark(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     bookmarked_on = models.DateTimeField(auto_now_add=True)
     bookmarked_hack = models.ForeignKey(Hack, on_delete=models.CASCADE)
+
+class Favorite(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    hack = models.ForeignKey(Hack, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    
