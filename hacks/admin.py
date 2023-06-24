@@ -4,6 +4,7 @@ from .models import Comment
 from .models import Bookmark
 from .models import LikeHack
 from .models import LikeComment
+from .models import Favorite
 
 
 @admin.register(Hack)
@@ -34,3 +35,9 @@ class LikeHackAdmin(admin.ModelAdmin):
 class LikeCommentAdmin(admin.ModelAdmin):
     list_display = ("user", "liked_comment_on", "liked_comment")
     search_fields = ["liked_comment"]
+
+
+@admin.register(Favorite)
+class FavoriteAdmin(admin.ModelAdmin):
+    list_display = ("id", "user", "hack", "created_at")
+    search_fields = ["id"]
