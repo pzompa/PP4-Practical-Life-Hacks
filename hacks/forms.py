@@ -7,16 +7,15 @@ from .models import Hack
 
 class HackForm(forms.ModelForm):
     ingredients = forms.CharField(widget=RichTextWidget())
-    instructions = forms.CharField(widget=RichTextWidget())
+    description = forms.CharField(widget=RichTextWidget())
 
     class Meta:
         model = Hack
         fields = [
             "category",
             "title",
-            "description",
             "ingredients",
-            "instructions",
+            "description",
             "image",
         ]
         widgets = {
@@ -24,12 +23,11 @@ class HackForm(forms.ModelForm):
             "description": forms.Textarea(attrs={"rows": 5}),
         }
         labels = {
-            "title": "Title",
-            "description": "Description",
-            "ingredients": "Ingredients",
-            "instructions": "Instructions",
-            "image": "Image",
             "category": "Category",
+            "title": "Title",
+            "ingredients": "Ingredients",
+            "description": "Description",            
+            "image": "Image",
         }
 
 
