@@ -31,10 +31,10 @@ h1, h2, h3, h4 ,h5, h6 {
 /* Header*/
 
 .container-fluid {
-    background-color:#775395;
+    background-color:rgb(232, 188, 215);
     box-shadow: 1px 1px 5px 0 #d4c1c361;
-    
-}
+}   
+
 .nav-item {
     text-transform: uppercase;
 }
@@ -49,37 +49,5 @@ a.nav-link {
     height: 10rem;
     width: 20rem;
     border-radius: 5%;
-}
-
-/* Form */
-
-.form {
-    background-color: rgb(177, 166, 179);
-    margin: 3% auto;
-    /* box-shadow: 1px 1px 5px 0 #d4c1c361; */
-    border-radius: 5px;
-}
-.linebreak {
-    border-bottom: 1px solid #d4c1c361;
-}
-
-.active {
-    border-bottom: 1px solid rgb(6, 1, 9);
-    font-weight: bold;
-}
-/* Footer */
-
-footer {
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: row;
-    background-color: #775395;
-    justify-content: center;
-    align-items: center;
-    border-top: 1px solid;
-}
-.social-icon {
-    height: 2rem;
-    margin: 1rem;
 }
 
