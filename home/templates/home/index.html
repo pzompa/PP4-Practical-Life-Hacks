@@ -5,14 +5,31 @@
 {% block content %} 
 
 <div class="container flex-column pt-3">
-    <section class="text-center">
-        <h1 class="main-title mx-auto">Discover the Ultimate Life Hacks to make your life easier and fun</h1>
+    <div class="image-container text-center">
+        <img src="/static/images/lamp-432250_1280.jpg" height="600px" width="auto"   alt="image of a hand holding a bulb">
 
-        <p class="pt-4">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus maxime culpa ullam optio, 
-        excepturi delectus rem deserunt dicta facilis, voluptate perferendis cum incidunt molestias similique corporis a? Labore, 
-        voluptatibus ex!
-    </section>
+    </div>
+    <div class="title-text text-center pt-4">
+        <h1 class="main-title mx-auto">Welcome to Life Hack: Your Shortcut to Smart Living!</h1>
+
+        <p class="main-text pt-3">
+            In a world full of complexities, we're your guide to simplicity. Our mission? 
+            Turning everyday challenges into opportunities, making life more efficient, and above all, enjoyable.
+            Whether you're seeking productivity hacks, health tips, or creativity boosters, we've got it all. 
+            
+            But Life Hack is more than a hub of clever tips and tricks - it's a thriving community of life enthusiasts 
+            committed to self-improvement and innovation.
+            <br>
+            Join us as we unravel the art of smart living. 
+            <br>
+        </p>
+        <a href="{% url 'hacks' %}">
+            <button class="btn btn-outline-dark m-4 main-btn mx-auto">
+                <h2>Explore</h2>
+            </button>
+        </a>
+   
+    </div>
     
 </div>
 
