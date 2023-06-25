@@ -5,11 +5,12 @@ from django.views.generic import (
     DetailView, DeleteView,
     UpdateView)
 from django import forms
-from django.shortcuts import render
-from .models import Hack, Comment
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views import View
+from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from .forms import HackForm
-
+from .models import Hack, Comment, Favorite
 
 
 
@@ -43,13 +44,24 @@ class Hacks(ListView):
     template_name = "hacks/hacks.html"
     context_object_name = "hacks"
 
+    def get_queryset(self, **kwargs):
+        query = self.request.GET.get('q')
+        if query:
+            hacks = self.model.objects.filter(
+                Q(title__icontains=query) |
+                Q(category__icontains=query) |
+                Q(description__icontains=query)
+            )
+        else: 
+            hacks = self.model.objects.all()
+        return hacks
 
 class HackDetail(DetailView):
     model = Hack
     template_name = "hacks/hack_detail.html"
     context_object_name = "hack"
 
-
+ 
 """Delete hack"""
 
 class DeleteHack(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -69,7 +81,6 @@ class EditHack(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         return self.request.user == self.get_object().created_by
-
 
 
 
