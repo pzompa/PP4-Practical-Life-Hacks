@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from djrichtextfield.models import RichTextField
+from django.utils.timezone import now
 
 
 class Hack(models.Model):
@@ -36,18 +37,22 @@ class Hack(models.Model):
     def __str__(self):
         return f"{self.title}"
 
-
-# model for Comment#
+ # model for Comment#
 class Comment(models.Model):
-    # comment text
-    comment_text = RichTextField(max_length=10000, default="", null=False, blank=False)
-    # comment date
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
+    name = models.CharField(max_length=255, null=True)
+    email = models.EmailField(null=True)
+    comment_text = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    # comment author
-    creator = models.ForeignKey(User, on_delete=models.CASCADE)
-    # author = models.CharField(max_length=255)
-    # comment for what Hack
-    hack = models.ForeignKey(Hack, on_delete=models.CASCADE)
+    updated_on = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
+    
+    class Meta:
+        ordering = ('created_on',)
+
+    def __str__(self):
+        return f'Comment by {self.name} on {self.post}'
+   
 
 
 # model for likes#
@@ -81,4 +86,3 @@ class Favorite(models.Model):
     hack = models.ForeignKey(Hack, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    

@@ -1,10 +1,9 @@
 from django.contrib import admin
-from .models import Hack
-from .models import Comment
-from .models import Bookmark
-from .models import LikeHack
-from .models import LikeComment
-from .models import Favorite
+from .models import (
+    Hack, Comment, Bookmark, LikeHack, LikeComment,
+    Favorite
+)
+
 
 
 @admin.register(Hack)
@@ -15,9 +14,9 @@ class HackAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ("comment_text", "hack_id")
-    search_fields = ["comment_text"]
-
+    list_display = ("comment_text", "name", "created_on", "active", "email")
+    list_filter = ["active", "created_on", "updated_on"]
+    search_fields = ("name", "email", "comment_text")
 
 @admin.register(Bookmark)
 class BookmarkAdmin(admin.ModelAdmin):
