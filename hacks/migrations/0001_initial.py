@@ -8,7 +8,6 @@ import djrichtextfield.models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -17,16 +16,54 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Hack',
+            name="Hack",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=200)),
-                ('category', models.CharField(choices=[('beauty', 'Beauty'), ('household', 'Household'), ('health', 'Health'), ('cleaning', 'Cleaning'), ('others', 'Others')], default='Choose your category', max_length=50)),
-                ('description', djrichtextfield.models.RichTextField(max_length=10000)),
-                ('created_on', models.DateTimeField(auto_now=True)),
-                ('image', cloudinary.models.CloudinaryField(default='placeholder', max_length=255, verbose_name='image')),
-                ('bookmarks', models.ManyToManyField(related_name='bookmarks', to=settings.AUTH_USER_MODEL)),
-                ('created_by', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='hack_owner', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=200)),
+                (
+                    "category",
+                    models.CharField(
+                        choices=[
+                            ("beauty", "Beauty"),
+                            ("household", "Household"),
+                            ("health", "Health"),
+                            ("cleaning", "Cleaning"),
+                            ("others", "Others"),
+                        ],
+                        default="Choose your category",
+                        max_length=50,
+                    ),
+                ),
+                ("description", djrichtextfield.models.RichTextField(max_length=10000)),
+                ("created_on", models.DateTimeField(auto_now=True)),
+                (
+                    "image",
+                    cloudinary.models.CloudinaryField(
+                        default="placeholder", max_length=255, verbose_name="image"
+                    ),
+                ),
+                (
+                    "bookmarks",
+                    models.ManyToManyField(
+                        related_name="bookmarks", to=settings.AUTH_USER_MODEL
+                    ),
+                ),
+                (
+                    "created_by",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="hack_owner",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]
