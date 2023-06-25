@@ -26,7 +26,6 @@ class Hack(models.Model):
     )
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    # bookmarks = models.ManyToManyField(User, related_name='bookmarks')
     image = CloudinaryField("image", default="placeholder")
 
     """To sort hacks search"""
@@ -37,8 +36,11 @@ class Hack(models.Model):
     def __str__(self):
         return f"{self.title}"
 
- # model for Comment#
+
+"""Model for Comment"""
+
 class Comment(models.Model):
+    hack = models.ForeignKey(Hack, on_delete=models.CASCADE, related_name='comments')
     creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
     name = models.CharField(max_length=255, null=True)
     email = models.EmailField(null=True)
@@ -46,40 +48,38 @@ class Comment(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)
-    
+
     class Meta:
         ordering = ('created_on',)
 
     def __str__(self):
-        return f'Comment by {self.name} on {self.post}'
-   
+        return f'Comment by {self.name} on {self.hack}'
 
 
-# model for likes#
 
+""" model for likes """
 
 class LikeComment(models.Model):
-    # like counter
-    # created on
-    # user id
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     liked_comment_on = models.DateTimeField(auto_now_add=True)
     liked_comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
 
+
+""" Model for likehacks """
 
 class LikeHack(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     liked_hack_on = models.DateTimeField(auto_now_add=True)
     liked_hack = models.ForeignKey(Hack, on_delete=models.CASCADE)
 
+""" Model for Bookmarks """
 
 class Bookmark(models.Model):
-    # what did i bookmark
-    # when did i bookmark
-    # who did bookmark
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     bookmarked_on = models.DateTimeField(auto_now_add=True)
     bookmarked_hack = models.ForeignKey(Hack, on_delete=models.CASCADE)
+
+""" Model for Favorite """
 
 class Favorite(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

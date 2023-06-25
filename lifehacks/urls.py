@@ -23,7 +23,5 @@ urlpatterns = [
     path('djrichtextfield/', include('djrichtextfield.urls')),
     path('', include('home.urls')),
     path('hacks/', include('hacks.urls'))
-
-
 ]
 
