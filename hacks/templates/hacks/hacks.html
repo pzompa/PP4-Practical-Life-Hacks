@@ -5,7 +5,7 @@ Hacks
 
 {% block content %}
 <div class="container d-flex flex-row flex-wrap justify-content-center">
-    <h1 class="text-center m-5">
+    <h1 class="text-center m-3">
         Browse Latest Hacks
     </h1>
 </div>
@@ -15,14 +15,16 @@ Hacks
     <!-- Hack Cards -->
     <div class="row card-deck">
         {% for hack in hacks %}
-        <div class="col-sm-6 col-md-4 col-lg-3 px-1 d-flex align-items-stretch">
+        <div class="col-sm-6 col-md-4 col-lg-3 px-1 d-flex justify-content-center">
             <div class="card card-detail hack-card mb-3 shadow-sm mx-auto mx-sm-2">
-                {% if "placeholder" in hack.image.url %}
-                <img src="https://res.cloudinary.com/aliokeeffe/image/upload/v1656016833/placeholder_image_prqssg.jpg"
-                    class="card-img-top" alt="placeholder image">
-                {% else %}
-                <img src=" {{ hack.image.url }}" alt="hack image" class="card-img-top">
-                {% endif %}
+                <div class="image-container">
+                    {% if "placeholder" in hack.image.url %}
+                    <img src="https://res.cloudinary.com/aliokeeffe/image/upload/v1656016833/placeholder_image_prqssg.jpg"
+                        class="card-img-top" alt="placeholder image">
+                    {% else %}
+                    <img class="card-img-top img-fit" height="300px" src=" {{ hack.image.url }}" alt="hack image" class="card-img-top">
+                    {% endif %}
+                </div>
 
                 <div class="card-body pb-1">
                     <h5 class="card-title hack-detail-title text-truncate hack-detail-background">{{ hack.title }}</h5>
@@ -30,13 +32,10 @@ Hacks
                     <h6 class="card-text hack-detail-background"><strong>Category: </strong>{{hack.category}}</h6>
                     <h6 class="card-text hack-detail-background"><strong>Description: </strong></h6>
                         </p>{{hack.description| safe |truncatechars:50}}</p>
-                        <a href="{% url 'hack_detail' hack.id %}" aria-multiline="btn btn-outline-dark m-2">Find out more</a>
+                        <a href="{% url 'hack_detail' hack.id %}" class="btn btn-outline-dark m-2">Find out more</a>
                 </div>
-                
             </div>
-            
         </div>
-    
         {% endfor %}
     </div>
 </div>
