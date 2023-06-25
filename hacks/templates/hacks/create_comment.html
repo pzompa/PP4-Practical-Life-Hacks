@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Add Comment
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form method="post" class="form mb-5" enctype="multipart/form-data">
+        <h1 class='text-center'>Add Comment</h1>
+
+        <div class="form-group">
+            <label for="username">Name</label>
+            <input type="text" id="username" value="{{ request.user.username }}" class="form-control" readonly>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" id="email" value="{{ request.user.email }}" class="form-control" readonly>
+        </div>
+
+        {{ form | crispy }}
+
+        {% csrf_token %}
+        {{ form.media }}
+        <div class="text-center">
+            <button type="submit" class="btn btn-outline-dark text-center">Submit</button>
+            <a class="btn btn-outline-dark m-2" href="{%  url 'create_comment' %}">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
