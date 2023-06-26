@@ -42,7 +42,8 @@ h1, h2, h3, h4 ,h5, h6 {
 a.nav-link {
     color: rgb(49, 44, 44);
     color: black;
-    
+    font-size: 1.2rem;
+   
 }
 
 .logo {
@@ -51,10 +52,24 @@ a.nav-link {
     border-radius: 5%;
 }
 
+.form-text {
+    margin-top: 30px;
+ 
+}
+
+.title-text {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-text {
+    font-size: 1.2rem;
+}
 /* Form */
 
 .form {
-    background-color: rgb(177, 166, 179);
     margin: 3% auto;
     width: 80%;
     border-radius: 5px;
@@ -62,11 +77,11 @@ a.nav-link {
 
 .linebreak {
     border-bottom: 1px solid rgb(177, 166, 179);
+    box-shadow: 1px 1px 5px 0 #d4c1c361;
 }
 
-.active {
-    border-bottom: 1px solid rgb(6, 1, 9);
-    font-weight: bold;
+.main-btn {
+    width: fit-content;
 }
 
 /* Hacks */
@@ -97,7 +112,7 @@ a.nav-link {
 
 .hack-detail-background {
     /* border: none; */
-    color: #886363;
+    color: #886363;  
 }
 
 /* Footer */
