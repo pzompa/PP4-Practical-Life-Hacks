@@ -9,7 +9,7 @@ Hack Detail - {{hack.title}}
 <div class="container p-4">
     <div class="d-flex flex-column">
         {% if "placeholder" in hack.image.url %}
-        <img src="https://res.cloudinary.com/aliokeeffe/image/upload/v1656016833/placeholder_image_prqssg.jpg"
+        <img src="https://res.cloudinary.com/dript5k0k/image/upload/v1687098783/nnxhjygr6oivcmytqe5a.png"
             class="hack-detail-img" alt="placeholder image">
         {% else %}
         <img src=" {{ hack.image.url }}" alt="hack image" class="hack-detail-img">
@@ -50,27 +50,37 @@ Hack Detail - {{hack.title}}
     {% endif %}
     <a href="{% url 'create_comment' hack_id=hack.id %}" class="btn btn-outline-dark m-2">Add Comment</a>
 </div>
-<div class="container">
-    <h3 class="text-center">Comments:</h3>
-    <div class="hack-detail-card">
-    {% for comment in comments %}
-    <form container>
-        {% csrf_token %}
-        {{ form|crispy }}
-        <div class="comment">
-            <p><strong>Comment by:</strong> {{ comment.name }}</p>
-            <p><strong>Email:</strong> {{ comment.email }}</p>
-            <p><strong>Posted on:</strong> {{ comment.created_on }}</p>
-            <p>{{ comment.comment_text }}</p>
-            <hr>
+
+<div class="container hack-detail-card">
+        <h5 class="hack-detail-background m-3">Comments: {{ comments.count }}</h5>
+        <button class="btn btn-outline-dark m-2" type="button" data-bs-toggle="collapse" data-bs-target="#commentsCollapse" aria-expanded="false" aria-controls="commentsCollapse">
+            Show/Hide Comments
+        </button>
+    
+    <div class="collapse" id="commentsCollapse">
+        <div class="hack-detail-card">
+            {% for comment in comments %}
+            <form container>
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="comment m-3">
+                    <p><strong class="hack-detail-background m-2">Comment by:</strong> {{ comment.name }}</p>
+                    <p><strong class="hack-detail-background m-2">Email:</strong> {{ comment.email }}</p>
+                    <p><strong class="hack-detail-background m-2">Posted on:</strong> {{ comment.created_on }}</p>
+                    <p>{{ comment.comment_text }}</p>
+                    <hr>
+                </div>
+            </form>
+            {% empty %}
+            <p>No comments yet.</p>
+            {% endfor %}
         </div>
-    </form>
-    {% empty %}
-    <p>No comments yet.</p>
-    {% endfor %}
+    </div>
 </div>
 
 {% endblock %}
+
+
 
 
  
