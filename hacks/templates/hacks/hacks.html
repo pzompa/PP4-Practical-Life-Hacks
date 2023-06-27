@@ -19,7 +19,7 @@ Hacks
             <div class="card card-detail hack-card mb-3 shadow-sm mx-auto mx-sm-2">
                 <div class="image-container">
                     {% if "placeholder" in hack.image.url %}
-                    <img src="https://res.cloudinary.com/dript5k0k/image/upload/v1687098783/nnxhjygr6oivcmytqe5a.png"
+                    <img src="https://res.cloudinary.com/dript5k0k/image/upload/v1687426045/y1csta9msqt5ov0p6dmc.jpg"
                         class="card-img-top" alt="placeholder image">
                     {% else %}
                     <img class="card-img-top img-fit" height="300px" src=" {{ hack.image.url }}" alt="hack image" class="card-img-top">
@@ -28,10 +28,9 @@ Hacks
 
                 <div class="card-body pb-1">
                     <h5 class="card-title hack-detail-title text-truncate hack-detail-background">{{ hack.title }}</h5>
-                    <h6>Posted by: {{ hack.created_by }} on {{ hack.created_on }}</h6>
+                    <h6>Posted by: {{ hack.created_by }} <br> {{ hack.created_on }}</h6>
                     <h6 class="card-text hack-detail-background"><strong>Category: </strong>{{hack.category}}</h6>
-                    <h6 class="card-text hack-detail-background"><strong>Description: </strong></h6>
-                        </p>{{hack.description| safe |truncatechars:50}}</p>
+                  
                         <a href="{% url 'hack_detail' hack.id %}" class="btn btn-outline-dark m-2">Find out more</a>
                 </div>
             </div>
