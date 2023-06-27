@@ -10,7 +10,7 @@ from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from .forms import HackForm, CommentForm
-from .models import Hack, Comment
+from .models import Hack, Comment, Favorite
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.utils.decorators import method_decorator
@@ -144,3 +144,14 @@ class EditHack(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def get_success_url(self):
         hack_id = self.object.id
         return reverse('hack_detail', args=[hack_id])
+
+    """ Favorite Hacks View """
+
+@method_decorator(login_required, name='dispatch')
+class FavoriteHacksView(generic.ListView):
+    model = Favorite
+    template_name = 'hacks/favorite_hacks.html'
+    context_object_name = 'favorites'
+
+    def get_queryset(self):
+        return Favorite.objects.filter(user=self.request.user)
