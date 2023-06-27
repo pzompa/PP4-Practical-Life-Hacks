@@ -12,16 +12,18 @@ My Favorite Hacks
 <div class="container d-flex-row flex-wrap justify-content-center">
     <hr class="home-break">
     <br>
-    <div class="row">
+    <div class="row card-deck">
         {% for favorite in favorites %}
         <div class="col-sm-6 col-md-4 col-lg-3 px-1 d-flex justify-content-center">
-            <div class="card mb-4 shadow-sm">
+            <div class="card hack-card mb-3 shadow-sm mx-auto mx-sm-2">
+                <div class="image-container">
                 {% if "placeholder" in favorite.hack.image.url %}
                 <img src="https://res.cloudinary.com/dript5k0k/image/upload/v1687426045/y1csta9msqt5ov0p6dmc.jpg"
                     class="card-img-top" alt="placeholder image">
                 {% else %}
                 <img src="{{ favorite.hack.image.url }}" alt="hack image" class="card-img-top">
                 {% endif %}
+            </div>
                 <div class="card-body">
                     <h6 class="card-text hack-detail-background"><strong>Category: </strong>{{favorite.hack.category}}</h6>
                     <h5 class="card-title">{{ favorite.hack.title }}</h5>
