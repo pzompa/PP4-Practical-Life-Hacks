@@ -5,82 +5,85 @@ Hack Detail - {{hack.title}}
 {% endblock %}
 
 {% block content%}
-
 <div class="container p-4">
-    <div class="d-flex flex-column">
-        {% if "placeholder" in hack.image.url %}
-        <img src="https://res.cloudinary.com/dript5k0k/image/upload/v1687098783/nnxhjygr6oivcmytqe5a.png"
-            class="hack-detail-img" alt="placeholder image">
-        {% else %}
-        <img src=" {{ hack.image.url }}" alt="hack image" class="hack-detail-img">
-        {% endif %}
-    </div>
-</div>
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+        
+            <div class="d-flex flex-column">
+                {% if "placeholder" in hack.image.url %}
+                <img src="https://res.cloudinary.com/dript5k0k/image/upload/v1687098783/nnxhjygr6oivcmytqe5a.png"
+                    class="hack-detail-img" alt="placeholder image">
+                {% else %}
+                <img src=" {{ hack.image.url }}" alt="hack image" class="hack-detail-img">
+                {% endif %}
+            </div>
+        </div>
 
-<div class="card-body hack-detail-outer ">
-    <div class="hack-detail-background">
-        <h1 class="text-center hack-title hack-detail-background">{{ hack.title }}</h1>
-        <p class="text-center">Posted by: {{ hack.created_by }} on {{ hack.created_on }}</p>
-    </div>
+        <div class="card-body hack-detail-outer ">
+            <div class="hack-detail-background">
+                <h1 class="text-center hack-title hack-detail-background">{{ hack.title }}</h1>
+                <p class="text-center">Posted by: {{ hack.created_by }} on {{ hack.created_on }}</p>
+            </div>
 
-    <div class="container hack-detail-card mb-3">
-        <h5 class="hack-detail-background m-3"><strong>Category: </strong>{{ hack.category }}</h5>
-    </div>
-    <div class="container hack-detail-card mb-3">
-        <h5 class="hack-detail-background m-3"><strong>Ingredients:</strong></h5>
-        <p class="hack-text m-3">
-            {{ hack.ingredients|safe }}
-        </p>
+            <div class="container hack-detail-card mb-3">
+                <h5 class="hack-detail-background m-3"><strong>Category: </strong>{{ hack.category }}</h5>
+            </div>
+            <div class="container hack-detail-card mb-3">
+                <h5 class="hack-detail-background m-3"><strong>Ingredients:</strong></h5>
+                <p class="hack-text m-3">
+                    {{ hack.ingredients|safe }}
+                </p>
 
-    </div>
+            </div>
 
-    <div class="container hack-detail-card">
+            <div class="container hack-detail-card">
 
-        <h5 class="hack-detail-background m-3"><strong>Description:</strong></h5>
-        <p class="text-center m-3">
-            {{ hack.description|safe }}
-        </p>
-    </div>
-</div>
+                <h5 class="hack-detail-background m-3"><strong>Description:</strong></h5>
+                <p class="text-center m-3">
+                    {{ hack.description|safe }}
+                </p>
+            </div>
+        </div>
 
-<div class="d-flex flex-row justify-content-center">
-    {% if request.user == hack.created_by %}
-    <a href="{% url 'edit_hack' hack.id %}" class="btn btn-outline-dark m-2 ">Edit Hack</a>
-    <a href="{% url 'delete_hack_confirm' hack.id %}" class="btn btn-outline-dark m-2">Delete Hack</a>
-    {% endif %}
-    <a href="{% url 'create_comment' hack_id=hack.id %}" class="btn btn-outline-dark m-2">Add Comment</a>
-</div>
+        <div class="d-flex flex-row justify-content-center">
+            {% if request.user == hack.created_by %}
+            <a href="{% url 'edit_hack' hack.id %}" class="btn btn-outline-dark m-2 ">Edit Hack</a>
+            <a href="{% url 'delete_hack_confirm' hack.id %}" class="btn btn-outline-dark m-2">Delete Hack</a>
+            {% endif %}
+            <a href="{% url 'create_comment' hack_id=hack.id %}" class="btn btn-outline-dark m-2">Add Comment</a>
+            <a href="{% url 'add_to_favorite' hack.id %}" class="btn btn-outline-dark m-2">Add to Favorite</a>
+            <a href="{% url 'remove_from_favorite' hack.id %}" class="btn btn-outline-dark m-2">Remove Favorite</a>
+        </div>
 
-<div class="container hack-detail-card">
-        <h5 class="hack-detail-background m-3">Comments: {{ comments.count }}</h5>
-        <button class="btn btn-outline-dark m-2" type="button" data-bs-toggle="collapse" data-bs-target="#commentsCollapse" aria-expanded="false" aria-controls="commentsCollapse">
-            Show/Hide Comments
-        </button>
-    
-    <div class="collapse" id="commentsCollapse">
-        <div class="hack-detail-card">
-            {% for comment in comments %}
-            <form container>
-                {% csrf_token %}
-                {{ form|crispy }}
-                <div class="comment m-3">
-                    <p><strong class="hack-detail-background m-2">Comment by:</strong> {{ comment.name }}</p>
-                    <p><strong class="hack-detail-background m-2">Email:</strong> {{ comment.email }}</p>
-                    <p><strong class="hack-detail-background m-2">Posted on:</strong> {{ comment.created_on }}</p>
-                    <p>{{ comment.comment_text }}</p>
-                    {% if request.user == comment.creator %}
-                        <a href="{% url 'delete_comment' hack_id=hack.id comment_id=comment.id %}" class="btn btn-outline-dark m-2">Remove Comment</a>
-                    {% endif %}
-                    <hr>
+        <div class="container hack-detail-card">
+                <h5 class="hack-detail-background m-3">Comments: {{ comments.count }}</h5>
+                <button class="btn btn-outline-dark m-2" type="button" data-bs-toggle="collapse" data-bs-target="#commentsCollapse" aria-expanded="false" aria-controls="commentsCollapse">
+                    Show/Hide Comments
+                </button>
+            
+            <div class="collapse" id="commentsCollapse">
+                <div class="hack-detail-card">
+                    {% for comment in comments %}
+                    <form container>
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="comment m-3">
+                            <p><strong class="hack-detail-background m-2">Comment by:</strong> {{ comment.name }}</p>
+                            <p><strong class="hack-detail-background m-2">Email:</strong> {{ comment.email }}</p>
+                            <p><strong class="hack-detail-background m-2">Posted on:</strong> {{ comment.created_on }}</p>
+                            <p>{{ comment.comment_text }}</p>
+                            {% if request.user == comment.creator %}
+                                <a href="{% url 'delete_comment' hack_id=hack.id comment_id=comment.id %}" class="btn btn-outline-dark m-2">Remove Comment</a>
+                            {% endif %}
+                            <hr>
+                        </div>
+                    </form>
+                    {% empty %}
+                    <p>No comments yet.</p>
+                    {% endfor %}
                 </div>
-            </form>
-            {% empty %}
-            <p>No comments yet.</p>
-            {% endfor %}
+            </div>
         </div>
     </div>
 </div>
-
 {% endblock %}
-
- 
