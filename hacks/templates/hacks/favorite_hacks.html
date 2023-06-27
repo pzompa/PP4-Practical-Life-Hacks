@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+My Favorite Hacks
+{% endblock %}
+
+{% block content %}
+<div class="container d-flex flex-row flex-wrap justify-content-center">
+    <h1 class="text-center m-3">
+        My Favorite Hacks
+    </h1>
+</div>
+<div class="container d-flex-row flex-wrap justify-content-center">
+    <hr class="home-break">
+    <br>
+    <div class="row">
+        {% for favorite in favorites %}
+        <div class="col-sm-6 col-md-4 col-lg-3 px-1 d-flex justify-content-center">
+            <div class="card mb-4 shadow-sm">
+                {% if "placeholder" in favorite.hack.image.url %}
+                <img src="https://res.cloudinary.com/dript5k0k/image/upload/v1687426045/y1csta9msqt5ov0p6dmc.jpg"
+                    class="card-img-top" alt="placeholder image">
+                {% else %}
+                <img src="{{ favorite.hack.image.url }}" alt="hack image" class="card-img-top">
+                {% endif %}
+                <div class="card-body">
+                    <h6 class="card-text hack-detail-background"><strong>Category: </strong>{{favorite.hack.category}}</h6>
+                    <h5 class="card-title">{{ favorite.hack.title }}</h5>
+                    <!-- <p class="card-text">{{ favorite.hack.description }}</p> -->
+                    <a href="{% url 'hack_detail' favorite.hack.id %}" class="btn btn-sm btn-primary">Find out more</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>You have no favorite hacks.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
