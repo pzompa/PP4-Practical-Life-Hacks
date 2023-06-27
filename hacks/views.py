@@ -53,6 +53,16 @@ class CreateComment(LoginRequiredMixin, CreateView):
         context['pk'] = self.kwargs['hack_id']
         return context
 
+class DeleteCommentView(LoginRequiredMixin, View):
+    def get(self, request, hack_id, comment_id):
+        comment = get_object_or_404(Comment, hack_id=hack_id, id=comment_id)
+
+        if request.user == comment.creator:
+            comment.delete()
+            messages.success(request, 'Your comment has been deleted successfully.')
+        
+        return redirect('hack_detail', pk=hack_id)
+
 
 """View all hacks"""
 
@@ -95,8 +105,6 @@ class HackDetail(DetailView):
             new_comment.hack = hack
             new_comment.save()
         return self.get(request, *args, **kwargs)
-
-
 
 
 """Delete hack"""
