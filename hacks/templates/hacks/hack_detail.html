@@ -45,8 +45,8 @@ Hack Detail - {{hack.title}}
 
 <div class="d-flex flex-row justify-content-center">
     {% if request.user == hack.created_by %}
-    <a href="{% url 'edit_hack' hack.id %}" class="btn btn-outline-dark m-2 ">Edit</a>
-    <a href="{% url 'delete_hack_confirm' hack.id %}" class="btn btn-outline-dark m-2">Delete</a>
+    <a href="{% url 'edit_hack' hack.id %}" class="btn btn-outline-dark m-2 ">Edit Hack</a>
+    <a href="{% url 'delete_hack_confirm' hack.id %}" class="btn btn-outline-dark m-2">Delete Hack</a>
     {% endif %}
     <a href="{% url 'create_comment' hack_id=hack.id %}" class="btn btn-outline-dark m-2">Add Comment</a>
 </div>
@@ -68,6 +68,9 @@ Hack Detail - {{hack.title}}
                     <p><strong class="hack-detail-background m-2">Email:</strong> {{ comment.email }}</p>
                     <p><strong class="hack-detail-background m-2">Posted on:</strong> {{ comment.created_on }}</p>
                     <p>{{ comment.comment_text }}</p>
+                    {% if request.user == comment.creator %}
+                        <a href="{% url 'delete_comment' hack_id=hack.id comment_id=comment.id %}" class="btn btn-outline-dark m-2">Remove Comment</a>
+                    {% endif %}
                     <hr>
                 </div>
             </form>
@@ -79,8 +82,5 @@ Hack Detail - {{hack.title}}
 </div>
 
 {% endblock %}
-
-
-
 
  
