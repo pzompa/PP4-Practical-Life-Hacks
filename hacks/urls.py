@@ -4,7 +4,8 @@ from .views import (
     CreateHack, Hacks,
     HackDetail, Comment, 
     DeleteHack, EditHack, 
-    CreateComment, FavoriteHacksView)
+    CreateComment, FavoriteHacksView,
+    AddToFavoritesView)
 
 
 
@@ -17,4 +18,7 @@ urlpatterns = [
     path("edit/<slug:pk>/", EditHack.as_view(), name="edit_hack"),
     path('create_comment/', CreateComment.as_view(), name='create_comment'),
     path('create_comment/<int:hack_id>/', CreateComment.as_view(), name='create_comment'),
+    path('add_to_favorite/<int:hack_id>/', views.AddToFavoritesView.as_view(), name='add_to_favorite'),
+    path('remove_from_favorite/<int:hack_id>/', views.RemoveFromFavoritesView.as_view(), name='remove_from_favorite'),
+    path('hacks/<int:hack_id>/comments/<int:comment_id>/delete', views.DeleteCommentView.as_view(), name='delete_comment'),
 ]
