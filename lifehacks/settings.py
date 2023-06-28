@@ -11,9 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
-
-if os.path.exists('env.py'):
+import dj_database_url
+if os.path.isfile('env.py'):
     import env
+
     
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,10 +30,14 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['8000-pzompa-pp4practicallife-x89vc4kn2v2.ws-eu100.gitpod.io']
+ALLOWED_HOSTS = [
+    '8000-pzompa-pp4practicallife-x89vc4kn2v2.ws-eu100.gitpod.io',
+    '8000-pzompa-pp4practicallife-x89vc4kn2v2.ws-eu101.gitpod.io',
+    'pp4-practical-life-hacks.herokuapp.com'
+    ]
                 
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-pzompa-pp4practicallife-x89vc4kn2v2.ws-eu100.gitpod.io']
+CSRF_TRUSTED_ORIGINS = ['https://8000-pzompa-pp4practicallife-x89vc4kn2v2.ws-eu100.gitpod.io','https://8000-pzompa-pp4practicallife-x89vc4kn2v2.ws-eu101.gitpod.io' ]
 
 
 # Application definition
@@ -43,12 +48,12 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'django_extensions',
     'cloudinary_storage',
+    'django.contrib.staticfiles',
     'cloudinary',
     'crispy_bootstrap5',
     'crispy_forms',
@@ -128,10 +133,15 @@ WSGI_APPLICATION = 'lifehacks.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'spepdmhg',
+        'USER' : 'spepdmhg',
+        'PASSWORD': 'IvTkTuK-Yvc08oODWSEOc51MQiMU1-0A',
+        'HOST' : 'snuffleupagus.db.elephantsql.com',
+        'PORT' : '5432'
     }
 }
+
 
 
 # Password validation
@@ -180,10 +190,11 @@ LOGIN_REDIRECT_URL = '/'
 
 
 MEDIA_URL = '/media/'
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+
 
 #Cloudinary Settings
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
