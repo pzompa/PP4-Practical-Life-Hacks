@@ -1,1 +1,1 @@
-web: gunicorn pp4-practical-life-hacks.wsgi
+web: gunicorn lifehacks.wsgi
