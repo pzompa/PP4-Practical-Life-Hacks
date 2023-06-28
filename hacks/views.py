@@ -9,12 +9,12 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from .forms import HackForm, CommentForm
-from .models import Hack, Comment, Favorite
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.utils.decorators import method_decorator
 from django.views import generic
+from .forms import HackForm, CommentForm
+from .models import Hack, Comment, Favorite
 
 """Add a Hack"""
 
@@ -29,39 +29,6 @@ class CreateHack(LoginRequiredMixin, CreateView):
         messages.success(self.request, 'You have successfully created a Hack.')
         return super().form_valid(form)
 
-"""Create a comment"""
-
-class CreateComment(LoginRequiredMixin, CreateView):
-    model = Comment
-    template_name = "hacks/create_comment.html"
-    fields = ["comment_text"] 
-
-    def form_valid(self, form):
-        form.instance.creator = self.request.user
-        form.instance.name = self.request.user.username 
-        form.instance.email = self.request.user.email 
-        form.instance.hack = get_object_or_404(Hack, pk=self.kwargs['hack_id'])
-        messages.success(self.request, 'Your comment has been added successfully.')
-        return super().form_valid(form)
-
-    def get_success_url(self):
-        hack_id = self.object.hack.id
-        return reverse('hack_detail', args=[hack_id])
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['pk'] = self.kwargs['hack_id']
-        return context
-
-class DeleteCommentView(LoginRequiredMixin, View):
-    def get(self, request, hack_id, comment_id):
-        comment = get_object_or_404(Comment, hack_id=hack_id, id=comment_id)
-
-        if request.user == comment.creator:
-            comment.delete()
-            messages.success(request, 'Your comment has been deleted successfully.')
-        
-        return redirect('hack_detail', pk=hack_id)
 
 
 """View all hacks"""
@@ -106,7 +73,6 @@ class HackDetail(DetailView):
             new_comment.save()
         return self.get(request, *args, **kwargs)
 
-
 """Delete hack"""
 
 class DeleteHack(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -145,7 +111,44 @@ class EditHack(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         hack_id = self.object.id
         return reverse('hack_detail', args=[hack_id])
 
-    """ Favorite Hacks View """
+
+"""Create a comment"""
+
+class CreateComment(LoginRequiredMixin, CreateView):
+    model = Comment
+    template_name = "hacks/create_comment.html"
+    fields = ["comment_text"] 
+
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+        form.instance.name = self.request.user.username 
+        form.instance.email = self.request.user.email 
+        form.instance.hack = get_object_or_404(Hack, pk=self.kwargs['hack_id'])
+        messages.success(self.request, 'Your comment has been added successfully.')
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        hack_id = self.object.hack.id
+        return reverse('hack_detail', args=[hack_id])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['pk'] = self.kwargs['hack_id']
+        return context
+
+
+class DeleteCommentView(LoginRequiredMixin, View):
+    def get(self, request, hack_id, comment_id):
+        comment = get_object_or_404(Comment, hack_id=hack_id, id=comment_id)
+
+        if request.user == comment.creator:
+            comment.delete()
+            messages.success(request, 'Your comment has been deleted successfully.')
+        
+        return redirect('hack_detail', pk=hack_id)
+
+
+""" Favorite Hacks View """
 
 @method_decorator(login_required, name='dispatch')
 class FavoriteHacksView(generic.ListView):
@@ -155,3 +158,27 @@ class FavoriteHacksView(generic.ListView):
 
     def get_queryset(self):
         return Favorite.objects.filter(user=self.request.user)
+
+
+class AddToFavoritesView(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        hack = get_object_or_404(Hack, id=self.kwargs.get('hack_id'))
+        fav, created = Favorite.objects.get_or_create(user=request.user, hack=hack)
+        if not created:
+            messages.success(self.request, "You've already favorited this hack.")
+        else:
+            messages.success(self.request, "You've added this hack to my favorite list.")
+        return redirect('hack_detail', pk=hack.id)
+
+class RemoveFromFavoritesView(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        hack = get_object_or_404(Hack, id=self.kwargs.get('hack_id'))
+        Favorite.objects.filter(user=request.user, hack=hack).delete()
+        messages.success(request, "Successfully removed from favorites.")
+        return redirect('hack_detail', pk=hack.id)
+
+
+
+
+
+
