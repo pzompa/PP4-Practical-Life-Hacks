@@ -28,13 +28,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG = False
 
-ALLOWED_HOSTS = [
-    '8000-pzompa-pp4practicallife-x89vc4kn2v2.ws-eu100.gitpod.io',
-    '8000-pzompa-pp4practicallife-x89vc4kn2v2.ws-eu101.gitpod.io',
-    'pp4-practical-life-hacks.herokuapp.com'
-    ]
+ALLOWED_HOSTS = ['*']
                 
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-pzompa-pp4practicallife-x89vc4kn2v2.ws-eu100.gitpod.io','https://8000-pzompa-pp4practicallife-x89vc4kn2v2.ws-eu101.gitpod.io' ]
@@ -142,6 +138,7 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT'),
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
