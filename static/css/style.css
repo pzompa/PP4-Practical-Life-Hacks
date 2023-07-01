@@ -200,6 +200,9 @@ footer {
     .main-text {
         width: 80%;
     }
+    a.nav-link {
+        text-align: center;
+    }
  }
 /* /X-Large devices (large desktops, 1200px and up) */
 @media screen and (min-width: 1200px) { 
