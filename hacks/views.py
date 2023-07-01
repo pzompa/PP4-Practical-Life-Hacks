@@ -23,11 +23,13 @@ class CreateHack(LoginRequiredMixin, CreateView):
     template_name = "hacks/create_hack.html"
     fields = ["category", "title", "ingredients", "description", "image"]
     success_url = "/hacks/hacks/"
+   
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user
         messages.success(self.request, 'You have successfully created a Hack.')
         return super().form_valid(form)
+
 
 
 
@@ -37,6 +39,7 @@ class Hacks(ListView):
     model = Hack
     template_name = "hacks/hacks.html"
     context_object_name = "hacks"
+    paginate_by = 8
 
     def get_queryset(self, **kwargs):
         query = self.request.GET.get('q')
@@ -49,6 +52,8 @@ class Hacks(ListView):
         else: 
             hacks = self.model.objects.all()
         return hacks
+
+
 
 """View a single hack"""
 
@@ -155,6 +160,7 @@ class FavoriteHacksView(generic.ListView):
     model = Favorite
     template_name = 'hacks/favorite_hacks.html'
     context_object_name = 'favorites'
+    paginate_by = 8
 
     def get_queryset(self):
         return Favorite.objects.filter(user=self.request.user)
