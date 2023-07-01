@@ -33,6 +33,9 @@ class Hack(models.Model):
     class Meta:
         ordering = ["-created_on"]
 
+    def is_favorited_by_user(self, user):
+        return self.favorite_set.filter(user=user).exists()
+
     def __str__(self):
         return f"{self.title}"
 
@@ -79,3 +82,14 @@ class Favorite(models.Model):
     hack = models.ForeignKey(Hack, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
+class Like(models.Model):
+    CATEGORY = (
+        ("hack", "Hack"),
+        ("comment", "Comment"),
+    )
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    hack = models.ForeignKey(Hack, on_delete=models.CASCADE)
+    category = models.CharField(
+        max_length=50, choices=CATEGORY, default="hack"
+    )
+    liked_at = models.DateTimeField(auto_now_add=True)

@@ -3,6 +3,7 @@
 {% block title %}
 Hack Detail - {{hack.title}}
 {% endblock %}
+{% load hack_tags %}
 
 {% block content%}
 <div class="container p-4">
@@ -50,9 +51,28 @@ Hack Detail - {{hack.title}}
             <a href="{% url 'edit_hack' hack.id %}" class="btn btn-outline-dark m-2 ">Edit Hack</a>
             <a href="{% url 'delete_hack_confirm' hack.id %}" class="btn btn-outline-dark m-2">Delete Hack</a>
             {% endif %}
+            
+            {% is_liked_by_user hack request.user as is_liked %}
+            {% if is_liked %}
+            <form method="post" action="{% url 'unlike_hack' hack.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-dark m-2">Unlike Hack</button>
+            </form>
+            {% else %}
+            <form method="post" action="{% url 'like_hack' hack.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-dark m-2">Like Hack</button>
+            </form>
+            {% endif %}
+
             <a href="{% url 'create_comment' hack_id=hack.id %}" class="btn btn-outline-dark m-2">Add Comment</a>
-            <a href="{% url 'add_to_favorite' hack.id %}" class="btn btn-outline-dark m-2">Add to Favorite</a>
+            
+            {% is_favorited_by_user hack request.user as is_favorited %}
+            {% if is_favorited %}
             <a href="{% url 'remove_from_favorite' hack.id %}" class="btn btn-outline-dark m-2">Remove Favorite</a>
+            {% else %}
+            <a href="{% url 'add_to_favorite' hack.id %}" class="btn btn-outline-dark m-2">Add to Favorite</a>
+            {% endif %}
         </div>
 
         <div class="container hack-detail-card">
@@ -68,10 +88,9 @@ Hack Detail - {{hack.title}}
                         {% csrf_token %}
                         {{ form|crispy }}
                         <div class="comment m-3">
-                            <p><strong class="hack-detail-background m-2">Comment by:</strong> {{ comment.name }}</p>
-                            <p><strong class="hack-detail-background m-2">Email:</strong> {{ comment.email }}</p>
+                            <p><strong class="hack-detail-background m-2">Comment:</strong> {{ comment.comment_text }}</p>
                             <p><strong class="hack-detail-background m-2">Posted on:</strong> {{ comment.created_on }}</p>
-                            <p>{{ comment.comment_text }}</p>
+                            <p><strong class="hack-detail-background m-2">Comment by:</strong> {{ comment.name }}</p>
                             {% if request.user == comment.creator %}
                                 <a href="{% url 'delete_comment' hack_id=hack.id comment_id=comment.id %}" class="btn btn-outline-dark m-2">Remove Comment</a>
                             {% endif %}

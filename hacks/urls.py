@@ -21,4 +21,6 @@ urlpatterns = [
     path('add_to_favorite/<int:hack_id>/', views.AddToFavoritesView.as_view(), name='add_to_favorite'),
     path('remove_from_favorite/<int:hack_id>/', views.RemoveFromFavoritesView.as_view(), name='remove_from_favorite'),
     path('hacks/<int:hack_id>/comments/<int:comment_id>/delete', views.DeleteCommentView.as_view(), name='delete_comment'),
+    path('like/<int:hack_id>/', views.LikeHackView.as_view(), name='like_hack'),
+    path('unlike/<int:hack_id>/', views.UnlikeHackView.as_view(), name='unlike_hack'),
 ]

@@ -14,7 +14,7 @@ from django.shortcuts import redirect
 from django.utils.decorators import method_decorator
 from django.views import generic
 from .forms import HackForm, CommentForm
-from .models import Hack, Comment, Favorite
+from .models import Hack, Comment, Favorite, Like
 
 """Add a Hack"""
 
@@ -179,6 +179,21 @@ class RemoveFromFavoritesView(LoginRequiredMixin, View):
 
 
 
+class LikeHackView(LoginRequiredMixin, View):
+    def post(self, request, *args, **kwargs):
+        hack = get_object_or_404(Hack, id=self.kwargs.get('hack_id'))
+        user = request.user
+        like, created = Like.objects.get_or_create(user=user, hack=hack, category="hack")
+        messages.success(request, "Successfully liked this Hack")
+        if not created:
+            # If a like already exists, delete it (this enables "unliking")
+            like.delete()
+        return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
 
-
+class UnlikeHackView(LoginRequiredMixin, View):
+    def post(self, request, *args, **kwargs):
+        hack_id = self.kwargs.get('hack_id')
+        Like.objects.filter(user=request.user, hack_id=hack_id).delete()
+        messages.success(request, "Successfully unliked this Hack")
+        return redirect('hack_detail', pk=hack_id)
