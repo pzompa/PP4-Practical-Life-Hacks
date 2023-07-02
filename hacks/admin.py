@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import (
-    Hack, Comment, Favorite
+    Hack, Comment, Favorite, Like
 )
 
 @admin.register(Hack)
@@ -19,4 +19,10 @@ class CommentAdmin(admin.ModelAdmin):
 @admin.register(Favorite)
 class FavoriteAdmin(admin.ModelAdmin):
     list_display = ("id", "user", "hack", "created_at")
+    search_fields = ["id"]
+
+
+@admin.register(Like)
+class LikeAdmin(admin.ModelAdmin):
+    list_display = ("id", "user", "hack", "category", "liked_at")
     search_fields = ["id"]
