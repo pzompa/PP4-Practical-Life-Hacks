@@ -36,6 +36,15 @@ class Hack(models.Model):
     def is_favorited_by_user(self, user):
         return self.favorite_set.filter(user=user).exists()
 
+    def count_favorites(self):
+        return self.favorite_set.count()
+
+    def count_likes(self):
+        return self.like_set.filter(category="hack").count()
+
+    def count_comments(self):
+        return self.comments.filter(active=True).count()
+
     def __str__(self):
         return f"{self.title}"
 
@@ -59,28 +68,15 @@ class Comment(models.Model):
         return f'Comment by {self.name} on {self.hack}'
 
 
-
-""" model for likes """
-
-class LikeComment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    liked_comment_on = models.DateTimeField(auto_now_add=True)
-    liked_comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
-
-
-""" Model for likehacks """
-
-class LikeHack(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    liked_hack_on = models.DateTimeField(auto_now_add=True)
-    liked_hack = models.ForeignKey(Hack, on_delete=models.CASCADE)
-
 """ Model for Favorite """
 
 class Favorite(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     hack = models.ForeignKey(Hack, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+
+
+""" model for likes """
 
 class Like(models.Model):
     CATEGORY = (
