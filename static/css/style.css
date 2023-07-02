@@ -142,7 +142,7 @@ footer {
         height: auto;
     }
     .hero-img {
-        width: 80%;
+        width: 100%;
     }
 }
 /* Small devices (landscape phones, 576px and up) */
@@ -152,7 +152,7 @@ footer {
         height: auto;
     }
     .hero-img {
-       width: 80%;
+       width: 100%;
     }
     /* .btn {
         width: fit-content;
@@ -177,7 +177,7 @@ footer {
         width: 280px;
     }
     .hero-img {
-        width: 80%;
+        width: 100%;
      }
     .form-text {
         font-size: 18px;
