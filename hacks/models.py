@@ -51,9 +51,12 @@ class Hack(models.Model):
 
 """Model for Comment"""
 
+
 class Comment(models.Model):
-    hack = models.ForeignKey(Hack, on_delete=models.CASCADE, related_name='comments')
-    creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
+    hack = models.ForeignKey(Hack, on_delete=models.CASCADE,
+                             related_name='comments')
+    creator = models.ForeignKey(User, on_delete=models.CASCADE,
+                                related_name='comments')
     name = models.CharField(max_length=255, null=True)
     email = models.EmailField(null=True)
     comment_text = models.TextField()
@@ -70,6 +73,7 @@ class Comment(models.Model):
 
 """ Model for Favorite """
 
+
 class Favorite(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     hack = models.ForeignKey(Hack, on_delete=models.CASCADE)
@@ -77,6 +81,7 @@ class Favorite(models.Model):
 
 
 """ model for likes """
+
 
 class Like(models.Model):
     CATEGORY = (

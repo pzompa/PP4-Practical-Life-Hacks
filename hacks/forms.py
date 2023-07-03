@@ -26,11 +26,14 @@ class HackForm(forms.ModelForm):
             "category": "Category",
             "title": "Title",
             "ingredients": "Ingredients",
-            "description": "Description",            
+            "description": "Description",
             "image": "Image",
         }
 
-""" Create Comment Form """  
+
+""" Create Comment Form """
+
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
