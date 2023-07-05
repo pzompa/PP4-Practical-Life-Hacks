@@ -3,10 +3,13 @@ from djrichtextfield.widgets import RichTextWidget
 from .models import Hack, Comment
 
 """Form to create a recipe"""
+
+
 class HackForm(forms.ModelForm):
     ingredients = forms.CharField(widget=RichTextWidget())
     description = forms.CharField(widget=RichTextWidget())
-    category = forms.ChoiceField(choices=[('', 'Choose your category'), ] + list(Hack.CATEGORY))
+    category = forms.ChoiceField(choices=[('', 'Choose your category'), ]
+                                 + list(Hack.CATEGORY))
 
     class Meta:
         model = Hack
@@ -29,8 +32,12 @@ class HackForm(forms.ModelForm):
             "image": "Image",
         }
 
+
 """ Create Comment Form """
+
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('name', 'email', 'comment_text')
+

@@ -25,5 +25,3 @@ urlpatterns = [
     path('', include('home.urls')),
     path('hacks/', include('hacks.urls'))
 ]
-
-
