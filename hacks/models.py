@@ -7,7 +7,6 @@ from django.utils.timezone import now
 
 class Hack(models.Model):
     CATEGORY = (
-        ("choose your category", "Choose Your Category"),
         ("Beauty", "Beauty"),
         ("Household", "Household"),
         ("Health", "Health"),
@@ -17,7 +16,7 @@ class Hack(models.Model):
 
     title = models.CharField(max_length=200, null=False, blank=False)
     category = models.CharField(
-        max_length=50, choices=CATEGORY, default="choose your category"
+        max_length=50, choices=CATEGORY, default="Others"
     )
     ingredients = RichTextField(max_length=10000, default="", null=True)
     description = RichTextField(max_length=10000, null=False, blank=False)
