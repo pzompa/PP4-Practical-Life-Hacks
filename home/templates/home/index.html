@@ -1,20 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}Home{% endblock %}
-
-
 {% block content %}
-
 <div class="container flex-column pt-3">
     <div class="image-container text-center">
         <img class="hero-img"
             src=https://res.cloudinary.com/dript5k0k/image/upload/v1687986069/static/images/lamp-432250_1280.e23e277bd528.jpg
             alt="image of a hand holding a bulb">
-
     </div>
     <div class="title-text text-center pt-4">
         <h1 class="main-title mx-auto">Welcome to Life Hack: Your Shortcut to Smart Living!</h1>
-
         <p class="main-text pt-3 mx-auto">
             In a world full of complexities, we're your guide to simplicity. Our mission?
             Turning everyday challenges into opportunities, making life more efficient, and above all, enjoyable.
@@ -29,8 +24,6 @@
         <a href="{% url 'hacks' %}" class="btn btn-outline-dark m-4 main-btn mx-auto">
             <span>Explore</span>
         </a>
-
-   
     </div>
 </div>
 {% endblock %}

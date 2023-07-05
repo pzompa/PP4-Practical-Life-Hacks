@@ -31,18 +31,18 @@ Hack Detail - {{hack.title}}
             </div>
             <div class="container hack-detail-card mb-3">
                 <h5 class="hack-detail-background m-3"><strong>Ingredients:</strong></h5>
-                <p class="hack-text m-3">
+                <!-- <p class="hack-text m-3"> -->
                     {{ hack.ingredients|safe }}
-                </p>
+                <!-- </p> -->
 
             </div>
 
             <div class="container hack-detail-card">
 
                 <h5 class="hack-detail-background m-3"><strong>Description:</strong></h5>
-                <p class="text-center m-3">
+                <!-- <p class="text-center m-3"> -->
                     {{ hack.description|safe }}
-                </p>
+                <!-- </p> -->
             </div>
         </div>
 
@@ -84,7 +84,7 @@ Hack Detail - {{hack.title}}
             <div class="collapse" id="commentsCollapse">
                 <div class="hack-detail-card">
                     {% for comment in comments %}
-                    <form container>
+                    <form>
                         {% csrf_token %}
                         {{ form|crispy }}
                         <div class="comment m-3">
