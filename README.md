@@ -4,7 +4,7 @@ Practical life hack is a website designed to help people seeking productivity ha
 <br>It acts as a repository for all kinds of hacks, whether it is seeking productivity hacks, health tips, or creativity boosters,  turning everyday challenges into opportunities, making life more efficient, and above all, enjoyable for the user. 
 
 This site is aimed at users who are committed to self-improvement and innovation.
-<br>The live site can be found [here](https://www.example.com)
+<br>The live site can be found [here](https://pp4lifehacks-cf7bb63fe093.herokuapp.com/)
 
 ![alt text](/docs/readme_images/sitemockup.png)
 
@@ -24,7 +24,10 @@ This site is aimed at users who are committed to self-improvement and innovation
     1. [Pthon Modules Used](#python-modules-used)
     2. [Languages](#languages)
     3. [External Python Modules](#external-python-modules)
+    
 4. [Database Design](#database-design)
+
+
 5. [Testing](TESTING.md#table-of-content)
     1. [Functional Testing](TESTING.md#functional-testing)
     2. [Negative Testing](TESTING.md#negative-testing)
@@ -136,7 +139,7 @@ The Kanban board was created using github projects and can be located [here](htt
 
 The following user stories were completed.
 
-#### EPIC : Base Setup
+##### EPIC : Base Setup
 
 - As a developer, I need to set up the django project so that I can develop and deploy the app.
 
@@ -147,8 +150,9 @@ The following user stories were completed.
 - As a developer, I need to create the footer with social media links so that people can know more about the app
 
 - As a developer, I need to create the navbar so that users can navigate to any pages on  the website from any device
+- As a developer, I need to create a search function where the user can easily serach for a hack based on title, description or a word without having to search the whole hacks.
 
-#### EPIC : Authentication
+##### EPIC : Authentication
 
 - As a developer, I need to implement allauth so that users can sign up and have access to various features of the websites
 
@@ -157,7 +161,7 @@ The following user stories were completed.
 - As a site owner, I would like the allauth pages customized to match the overall look of the site
 
 
-#### EPIC : Stand Alone Pages
+##### EPIC : Stand Alone Pages
 
 - As a Site owner I want a Homepage so that users can view the Hacks and favorite the hack to try later
 
@@ -167,7 +171,7 @@ The following user stories were completed.
 
 - As a developer, I need to implement a 403 error page to redirect unauthorised users to so that I can secure my views
 
-#### EPIC : Hacks
+##### EPIC : Hacks
 
 - As a Site User, I can input my add a Hack onto the app through an easy to use interface so that I can share them with other users.
 
@@ -175,7 +179,6 @@ The following user stories were completed.
 
 - As a user, I would like to receive feedback when I create a Hack or edit so I know it was completed successfully
 
-- As a Site User I can view my Hacks so that I can see and manage all Hacks I have created in the one location.
 
 - As a Site User I can view my Favorited Hacks so I can find them easily in the one location.
 
@@ -186,7 +189,7 @@ The following user stories were completed.
 - As a Site User I can comment on any Hacks and delete my comments.
 
 - As a Site User I can view all the Hacks created by all the users.
-#### EPIC : Comment and Likes
+##### EPIC : Comment and Likes
 
 - As a user, I can comment on a hack after loggin in.
 - As a user, I can delete my comments
@@ -196,24 +199,24 @@ The following user stories were completed.
 - If a user is not logged in the user will be directed to log in or signup
 
 
-#### EPIC : Deployment
+##### EPIC : Deployment
 
 - As a developer, I need to set up whitenoise so that my static files are served in Deployment
 
 - As a developer, I need to deploy the project to Heroku so that it is live for all users.
 
-#### EPIC : Documentation
+##### EPIC : Documentation
 
 - Complete readme documentation 
 
 - Complete testing documentation 
 
-#### User stories not implemented
+##### User stories not implemented
 - Email verification after a user register to the website was not done due to time constraint. 
 - Which is intented to be implemented in the future.
 
-#### Future planned features
-- A possibilty to filter the hacks according to their category is a feature will be implemented in future.
+##### Future planned features
+- A possibilty to filter the hacks according to their category is a feature which will be implemented in future.
 
 ---
 # Design:
@@ -283,7 +286,7 @@ These fonts were imported via Google Fonts.
 ---
 # Technologies
 
-- Gitpod - The website was developed using Gitpod with Visual Studio Code
+- Gitpod - The website was developed using Gitpod
 
 - GitHub - Source code is hosted on GitHub
 
@@ -293,25 +296,24 @@ These fonts were imported via Google Fonts.
 
 - Favicon.io - favicon files were created at this website
 
-- Balsamiq - wireframes were created using balsamig
-
-- looga.com - Logo was created on this website.
-- Google Fonts - Used to import fonts used on the page
-- W3C - Used for HTML and CSS validation
-- CI Python Lynter Validator
-- AmIResponsive -  Site mockup generator
-- Jshint - used to validate javascript
-- TinyPNG - This was used to compress hero image for optimal load times
-- Cloudinary - the image hosting service used to upload images
+- [Balsamiq](https://balsamiq.com/)- wireframes were created using balsamig
+- [Lucidchart](https://www.lucidchart.com/pages/)- was used to create the data schema
+- [looga.com](https://looka.com/) - Logo was created on this website.
+- [Google Fonts](https://fonts.google.com/) - Used to import fonts used on the page
+- [W3C](https://validator.w3.org/) - Used for HTML and CSS validation
+- [CI PEP8](https://pep8ci.herokuapp.com/) CI Python Lynter Validator
+- [AmIResponsive](https://ui.dev/amiresponsive) -  Site mockup generator
+- [TinyPNG](tinypng.com) - This was used to compress hero image for optimal load times
+- [Cloudinary](https://cloudinary.com/) - the image hosting service used to upload images
 - Crispy Forms - used to manage Django Forms
 
 ## Languages
 
 - HTML
 
-- CSS 
+- CSS
 
-- JavaScript 
+- JavaScript
 
 - Python
 
@@ -374,34 +376,37 @@ These fonts were imported via Google Fonts.
 ---
 # Security Features and Defensive Design
 
-- Environment variables were stored in an env.py for local development for security purposes to ensure no secret keys, api keys or sensitive information was added the the repository. In production, these variables were added to the heroku config vars within the project.
-Cross-Site Request Forgery (CSRF) tokens were used on all forms throughout this site.
+- Environment variables were stored in an env.py for local development for security purposes to ensure no secret keys, api keys or sensitive information was added the the repository.
+
+- In production, these variables were added to the heroku config vars within the project.
+- Cross-Site Request Forgery (CSRF) tokens were used on all forms throughout this site.
 ---
 ## User Authentication
 - Django's LoginRequiredMixin is used to restrict any not authenticated users from accessing secure pages. They will be redirected to the error page with a customized message
 
-- Django’s UserPassesTestMixin is used to limit access based on certain permission criteria to ensure that only the author of the hacks or comments are allowed to edit/delete. If the user doesn’t pass the test they are show an HTTP 403 Forbidden error.
+- Django’s UserPassesTestMixin is used to limit access based on certain permission criteria to ensure that only the author of the hacks or comments are allowed to edit/delete. If the user doesn’t pass the test they are show an error page with customized message.
 ---
 # Features
-### Header:
-![](/docs/readme_images/header1.png)
-Header img
+
 
 ### Logo: 
 - A customized logo was generated on looka.com website
 - The logo is positioned in the top left of the navigation menu. The logo is linked to the home page so that user can come to the homepage from anywhere on the website.
+
+### Header:
+![](/docs/readme_images/header1.png)
 
 ### Navigation menu:
 ![](/docs/readme_images/header.png)
 
 - The nav menu is present at the top of every page and include links to all the other pages.
 - Navigation bar is responsive and collapsing in hamburger menu for mobile screens.
-- (Img)
+![](/docs/readme_images/hamburgermenu.png)
 
 When a user is not logged in:
 - The navbar shows Home, Browse Hacks, Add hack, Register and Login menu
 - If the user tries to add a hack, like a hack or favorite a hack, they will be redirected to Signup or login page
-- (Img)
+
 
 When a user is logged in:
 - The nav bar shows Home, Browse Hacks, Add hack, Add to Favorite and Logout menu
@@ -506,12 +511,19 @@ By forking the GitHub Repository we make a copy of the original repository by us
 ---
 ## Credits
 The Images were taken from pexels.
-I relied on the youtube Tutorials by Dee MG link, Codemy.com , netsetos https://www.youtube.com/watch?v=L6boPI7Zy60
+- I relied on the youtube Tutorials like:  
+- [Dee MG](https://www.youtube.com/watch?v=sBjbty691eI&list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy)
+- [Very Academy](https://www.youtube.com/watch?v=dXkmPAnqnTE)
+
+- [Codemy](https://www.youtube.com/watch?v=B40bteAMM_M&list=PLCC34OHNcOtr025c1kHSPrnP18YPB-NFi)
+- [netsetos ](https://www.youtube.com/watch?v=L6boPI7Zy60)
 - google
 - Stack Overflow
 - Pexels: All imagery on the site was sourced from Pexels.com
 ---
 ## Acknowledgement
+- My mentor Gereth McGirr from Code Institute as always has been very helpful with tips and advices.
+- My Family for their patience, support.
 
 
 
