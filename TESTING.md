@@ -18,29 +18,259 @@
 ---
 ## Functional Testing
 ### Authentication
-- register a user
-- login a user
-- logout a user
-- delete a user
+- Register a User
+
+        Description:
+        Ensure a user can register to the pp4_lifehacks website.
+
+        Steps:
+        1. Navigate to pp4_lifehacks and click on Register
+        2. Enter E-mail, username and password
+        3. Click Sign Up
+
+        Expected:
+        Regisration is successful and the user is logged in
+
+        Actual:
+        Registration was sucessful and user is logged in automatically
+
+
+- Login a User
+
+        Description:
+        Ensure that a user can login to the website
+
+        Steps:
+        1. Navigate to pp4_lifehacks and click on Login
+        2. Enter username (Login) and Password
+        3. Click Sign In
+
+        Expected:
+        User is sucessfully logged in and redirected to the Home page
+
+        Actual:
+        User is sucessfully logged in and redirected to the Home page
+
+
+- Logout a User
+
+        Description:
+        Ensure that the user can sign out
+
+        Steps:
+        1. login to the website
+        2. Click on logout in the Navbar
+        3. click on "Sign Out" button to confirm
+
+        Expected:
+        User is logged out from the website
+
+        Actual:
+        User is logged out from the website
 
 ### Hacks
-- browse hacks
-- add hacks
-- edit hacks
-- delete hacks
+- Browse Hacks
+
+        Description:
+        Ensure that we can see all Hack regardless if you are logged in or not
+
+        Steps:
+        1. Navigate to the Website
+        2. click on "Browse Hacks"
+
+        Expected:
+        We see all Hacks with each hack having a "Find out more" button
+
+        Actual:
+        We see all Hacks with each hack having a "Find out more" button
+
+- Add a Hack
+
+        Description:
+        Ensure that a logged in user can add a new Hack to the website.
+
+        Steps:
+        1. Navigate to the website
+        2. Login as a User
+        3. Click on "Add Hack" link - Navbar
+        4. Select Category from dropdown list
+        5. enter Title, Ingredients, Description and select an Image
+        6. click Submit button
+
+        Expected:
+        A logged in user should be able to add a new Hack to the website.
+
+        Actual:
+        A logged in user is able to add a new Hack to the website.
+
+
+- Edit a Hack
+
+        Description:
+        Ensure that a logged in User can edit his/her own Hacks.
+
+        Steps:
+        1. Navigate to the website
+        2. Login as a User
+        3. click on "Browse Hacks" or "My Favorite", or use the search function
+        4. click on "Find out more" on a specific Hack
+        5. click on "Edit Hack" button
+        6. Edit Category, Title, Ingredients, Description and/or Image
+        7. click on "Edit Hack"
+
+        Expected:
+        User is able to edit his/her own Hacks.
+
+        Actual:
+        User is able to edit his/her own Hacks.
+
+- Delete a Hack
+
+        Description:
+        Ensure that a User can delete his/her own Hacks.
+
+        Steps:
+        1. Navigate to the website
+        2. Login as a User
+        3. click on "Browse Hacks" or "My Favorite", or use the search function
+        4. click on "Find out more" on a specific Hack
+        5. click on "Delete Hack" button
+        6. click on "Confirm" button to confirm deletion
+
+        Expected:
+        User is able to delete his/her own Hacks.
+
+
+        Actual:
+        User is able to delete his/her own Hacks.
 
 ### Favorite Hacks
-- add Hack to Favorite list
-- remove a Hack from Favorite list
+- Add a Hack to Favorite list
+
+        Description:
+        Ensure that all logged in users can add any Hacks to his/her "My Favorite" list
+
+        Steps:
+        1. Navigate to the website
+        2. click on "Browse Hacks" or "My Favorite", or use the search function
+        3. click on "Find out more" on a specific Hack
+        4. click on "Add to Favorite" button
+        5. enter username (login) and password
+        6. click on "Sign in" button
+
+        Expected:
+        A user after logging in, is able to add a hack to his/her favorite list
+
+        Actual:
+        A user after logging in, is able to add a hack to his/her favorite list
+
+- Remove a Hack from Favorite list
+
+        Description:
+        Ensure that all logged in users can remove any Hacks from his/her "My Favorite" list
+
+        Steps:
+        1. Navigate to the website
+        2. click on login
+        3. enter username and password
+        4. click on "sign in" button
+        2. click on "Browse Hacks" or "My Favorite", or use the search function
+        3. click on "Find out more" on a specific Hack
+        4. click on "Remove from Favorite" button
+
+
+        Expected:
+        the user is able to remove a Hack from his "My Favorite" list
+
+        Actual:
+        the user is able to remove a Hack from his "My Favorite" list
 
 ### Like a Hack
 - Like a Hack
+
+        Description:
+        Ensure that a logged in user can like any Hacks.
+
+        Steps:
+        1. Navigate to the website
+        2. click on login
+        3. enter username and password
+        4. click on "sign in" button
+        5. click on "Browse Hacks" or "My Favorite", or use the search function
+        6. click on "Find out more" on a specific Hack
+        7. click on "Like" button
+
+        Expected:
+        a logged in user can like any Hack.
+
+        Actual:
+        a logged in user can like any Hack.
+
 - Unlike a Hack
 
-### Comment a Hack
-- add a comment 
-- remove a comment
+        Description:
+        Ensure that a logged in user can unlike any Hacks.
 
+        Steps:
+        1. Navigate to the website
+        2. click on login
+        3. enter username and password
+        4. click on "sign in" button
+        5. click on "Browse Hacks" or "My Favorite", or use the search function
+        6. click on "Find out more" on a specific Hack
+        7. click on "Unlike" button
+
+        Expected:
+        a logged in user can unlike any Hack.
+
+        Actual:
+        a logged in user can unlike any Hack.
+
+
+### Comment a Hack
+- Add a Hack Comment 
+
+        Description:
+        Ensure that a logged in user, can add one or more comments to any Hacks
+
+        Steps:
+        1. Navigate to the website
+        2. click on login
+        3. enter username and password
+        4. click on "sign in" button
+        5. click on "Browse Hacks" or "My Favorite", or use the search function
+        6. click on "Find out more" on a specific Hack
+        7. click on "Add Comment" button
+        8. enter comment text
+        9. click on "Submit button 
+
+        Expected:
+        as a logged in user, the user can add one or more comments.
+        the comment counter on the Hack Detail page, increased after successful uploading the comment
+
+        Actual:
+        the comment counter on the Hack Detail page, increased after successful uploading the comment
+
+- Remove a Hack Comment
+
+        Description:
+        Ensure that a logged in user, can remove his/her comment for a Hack
+
+        Steps:
+        1. Navigate to the website
+        2. click on login
+        3. enter username and password
+        4. click on "sign in" button
+        5. click on "Browse Hacks" or "My Favorite", or use the search function
+        6. click on "Find out more" on a specific Hack
+        7. click on Show/Hide Comments
+        8. click "Remove Comment" button
+
+        Expected:
+        as a logged in user, the user can delete a specific comment for a specific Hack
+
+        Actual:
+        as a logged in user, the user can delete a specific comment for a specific Hack
 ---
 ## Negative Testing
 ### Hacks
@@ -60,37 +290,12 @@
 1. if the user is not logged in, the user cannot comment on a Hack
 2. if the user is not logged inand be the creator of the comment, the user cannot delete the comment
 
-## Unit Testing
-
-### Hacks
-#### Create a Hack test
-
-#### Edit a Hack test
-#### Read a Hack test
-#### Delete a Hack test
-
-### Like
-#### Like a Hack test
-#### Unlike a Hack test
-
-### Favorite
-#### Add a Hack to Favorite list test
-#### Remove a Hack from Favorite list test
-
-### Comment a Hack
-#### Add a Comment to a Hack
-#### Remove a Comment from a Hack
-
-
-
-## Accessibility
-
-## Validator Testing
-
-## PEP8 Testing
+---
 
 ## Lighthouse Testing
 
+
+---
 ## Manual Testing
 
 ### Testing "Home" page
