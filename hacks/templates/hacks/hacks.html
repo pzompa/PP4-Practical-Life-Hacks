@@ -37,6 +37,8 @@ Hacks
                 </div>
             </div>
         </div>
+        {% empty %}
+            <h1 class="text-center">Not found</h1>
         {% endfor %}
         <div class="text-center m-4">
             {% if is_paginated %}
