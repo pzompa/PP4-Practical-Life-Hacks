@@ -12,7 +12,7 @@ Hack Detail - {{hack.title}}
         
             <div class="d-flex flex-column">
                 {% if "placeholder" in hack.image.url %}
-                <img src="https://res.cloudinary.com/dript5k0k/image/upload/v1688633389/imgweb_hqr5sz.webp"
+                <img src="https://res.cloudinary.com/dript5k0k/image/upload/v1688742813/imgweb_hqr5sz_1_1_1_g4h7h2.webp"
                     class="hack-detail-img" alt="placeholder image">
                 {% else %}
                 <img src=" {{ hack.image.url }}" alt="hack image" class="hack-detail-img">
@@ -31,18 +31,12 @@ Hack Detail - {{hack.title}}
             </div>
             <div class="container hack-detail-card mb-3">
                 <h5 class="hack-detail-background m-3"><strong>Ingredients:</strong></h5>
-                <!-- <p class="hack-text m-3"> -->
                     {{ hack.ingredients|safe }}
-                <!-- </p> -->
-
             </div>
 
             <div class="container hack-detail-card">
-
                 <h5 class="hack-detail-background m-3"><strong>Description:</strong></h5>
-                <!-- <p class="text-center m-3"> -->
                     {{ hack.description|safe }}
-                <!-- </p> -->
             </div>
         </div>
 

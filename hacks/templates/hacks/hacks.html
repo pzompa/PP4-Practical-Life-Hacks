@@ -20,7 +20,7 @@ Hacks
             <div class="card hack-card mb-3 shadow-sm mx-auto mx-sm-2">
                 <div class="image-container">
                     {% if "placeholder" in hack.image.url %}
-                    <img src="https://res.cloudinary.com/dript5k0k/image/upload/v1688633389/imgweb_hqr5sz.webp"
+                    <img src="https://res.cloudinary.com/dript5k0k/image/upload/v1688742813/imgweb_hqr5sz_1_1_1_g4h7h2.webp"
                         class="card-img-top" alt="placeholder image">
                     {% else %}
                     <img class="card-img-top img-fit" src="{{ hack.image.url }}" alt="hack image">
@@ -38,8 +38,9 @@ Hacks
             </div>
         </div>
         {% empty %}
-            <h1 class="text-center">Not found</h1>
+            <h1 class="text-center">No match found</h1>
         {% endfor %}
+           <!-- Pagination -->
         <div class="text-center m-4">
             {% if is_paginated %}
                 {% if page_obj.has_previous %}
