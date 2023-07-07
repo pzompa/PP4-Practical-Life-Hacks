@@ -72,6 +72,7 @@ This site is also aimed at users who are committed to self-improvement and innov
 
 ## Agile Planning
 This project was developed based on agile methodologies. 
+- Due to a major issue with my first Project repo, I had to delete my previous Repo which had all the user stories and start with a new Repo. which is why my project board seem little off sequencially. I had to redo my userstories all over again mid way of the project.
 
 ###  Epics or Milestone
 
