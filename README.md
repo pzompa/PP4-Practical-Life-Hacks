@@ -218,6 +218,8 @@ The following user stories were completed.
 
 ##### Future planned features
 - A possibilty to filter the hacks according to their category is a feature which will be implemented in future.
+##### Favicon 
+- A favicon was added to clearly identify the website in the browser when multiple tabs are open.
 
 ---
 # Design:

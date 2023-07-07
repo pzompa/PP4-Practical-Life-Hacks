@@ -8,12 +8,11 @@
     4. [Like a Hack](#like-a-hack)
     5. [Comment a Hack](#comment-a-hack)
 2. [Negative Testing](#negative-testing)
-3. [Unit Testing](#unit-testing)
-4. [Accessibility](#accessibility)
-5. [Validator Testing](#validator-testing)
-6. [PEP8 Testing](#pep8-testing)
-7. [Lighthouse Testing](#lighthouse-testing)
-8. [Manual Testing](#manual-testing)
+3. [Validator Testing](#validator-tesing)
+4. [PEP8 Testing](#pep8-testing)
+5. [Wavetest](#wavetest)
+5. [Lighthouse Testing](#lighthouse-testing)
+6. [Manual Testing](#manual-testing)
 
 ---
 ## Functional Testing
@@ -290,9 +289,63 @@
 1. if the user is not logged in, the user cannot comment on a Hack
 2. if the user is not logged inand be the creator of the comment, the user cannot delete the comment
 
+### Validator Tesing
+- Homepage
+![](/docs/testing_images/Homepage.png)
+- Browsehack
+
+![](/docs/testing_images/browsehack.png)
+
+- Edit Hack
+
+![](/docs/testing_images/edithack.png)
+
+-  addcomment 
+
+![](/docs/testing_images/addcomment.png)
+
+- myfavoritehack
+
+![](/docs/testing_images/myfavoritehack.png)
+
+- register
+
+![](/docs/testing_images/register.png)
+
+- logout
+
+![](/docs/testing_images/logout.png)
+
+- 404 
+![](/docs/testing_images/404.png)
+
+### PEP8 Testing
+
+- hacks-view
+![](/docs/testing_images/hacks-views.png)
+
+- hacks.url
+![](/docs/testing_images/hacks-url.png)
+
+- hacks-model
+![](/docs/testing_images/hacks-model.png)
+
+- hacks-form
+![](/docs/testing_images/hacks-form.png)
+
+- hacks-admin
+![](/docs/testing_images/hacks-admin.png)
+
+### wavetest
+![](/docs/testing_images/wavetest.png)
+
 ---
 
 ## Lighthouse Testing
+- Lighthouse report showed areas for improvement on SEO.  Warnings were coming from the use of an embedded iframe's javascript and cloudfarte CDN. Unfortunately I did not find a way to improve this.
+
+- ![Lighthouse Desktop Test](/docs/testing_images/browsehacks.png)
+- ![Lighthouse Mobile test](/docs/testing_images/lighthousehackdetail.png)
 
 
 ---
@@ -755,6 +808,23 @@
 | template file       | render         | render  "hacks/hack_detail.html"                     | Pass      |
 |                     |                |                                                      |           |
 | Hack Detail page    | display        | display hack detail page                             | Pass      |
+
+### Fixed Bugs
+
+- Search function:
+  - If no match was found, an empty page was returned.
+I fixed it by adding a templatetag { % empty %} in the template file.
+
+- Hacks template file became too long and amount of sql queries were enormous because all hacks were displayed on the page.
+  - I implemented paginator with 8 hacks per page. Page size was reduced and amount of sql queries were reduced.
+
+### Unfixed Bugs
+
+- On the edit page, an empty image field "currently" is displayed
+  - I was not able to resolve this issue due to time constraints.
+
+
+
 
 
 
