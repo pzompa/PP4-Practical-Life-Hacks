@@ -46,7 +46,8 @@ class Hacks(ListView):
             hacks = self.model.objects.filter(
                 Q(title__icontains=query) |
                 Q(category__icontains=query) |
-                Q(description__icontains=query)
+                Q(description__icontains=query) |
+                Q(created_by__username__icontains=query)
             )
         else:
             hacks = self.model.objects.all()
