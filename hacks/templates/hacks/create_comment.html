@@ -14,7 +14,6 @@
             <input type="text" id="username" value="{{ request.user.username }}" class="form-control" readonly>
         </div>
         {{ form | crispy }}
-
         {% csrf_token %}
         {{ form.media }}
         <div class="text-center">
