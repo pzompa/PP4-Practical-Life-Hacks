@@ -28,6 +28,7 @@ This site is aimed at users who are committed to self-improvement and innovation
 4. [Database Design](#database-design)
 
 
+
 5. [Testing](TESTING.md#table-of-content)
     1. [Functional Testing](TESTING.md#functional-testing)
     2. [Negative Testing](TESTING.md#negative-testing)
@@ -366,12 +367,25 @@ These fonts were imported via Google Fonts.
 
 ---
 # Database Design:
-- 
-- 
-- 
+Object Oriented Programming principles were followed throughout this project and Django's Class Based Views (CBVs) were used for the App Views.
+
+Django AllAuth was used for the user authentication system. 
+
+The hack data is stored and implemented with a Hack model. The Hacks model has a foreign key to the User model. Only an authenticated user can create a new Hack entry. An indivitual hack can only refer to one user in the User model. 
+
+Each Hack can have zero or more comments. To make a comment, you have to be logged in. The comment data is stored and implemented with a Comment model. It has one foreign key to the User model, and another foreign key to the Hack model. A comment can only refer to one user and one hack. 
+
+Each Hack can have zero or more likes. To like a hack, you have to be logged in. The like data is stored and implemented with a Like model. It has one foreign key to the User model, and another foreign key to the Hack model. A like can only refer to one user and one hack.
+
+It's possible to mark a hack as a favorite. To do so, you need to be logged in. The favorite data is stored and implemented using a Favorite model. It has one foreign key to the User model, and another foreign key to the Hack model. A favorite can only refer to one user and one hack.
+
+The diagram below details the database schema.
+
+![Database Schema](/docs/testing_images/databaseschema.jpeg)
+
 
 ---
-# Testing:
+# Testing Documentation:
 - Testing and results can be found [here](TESTING.md)
 ---
 # Security Features and Defensive Design
@@ -511,15 +525,19 @@ By forking the GitHub Repository we make a copy of the original repository by us
 ---
 ## Credits
 The Images were taken from pexels.
+
+- Stack Overflow
+- [Django documentation](https://docs.djangoproject.com/en/4.2/intro/)
+- [python official docs](https://docs.python.org/3/tutorial/index.html)
+- [Pexels](Pexels.com): All imagery on the site was sourced from Pexel
 - I relied on the youtube Tutorials like:  
-- [Dee MG](https://www.youtube.com/watch?v=sBjbty691eI&list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy)
+- [Dee MC](https://www.youtube.com/watch?v=sBjbty691eI&list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy)
 - [Very Academy](https://www.youtube.com/watch?v=dXkmPAnqnTE)
 
 - [Codemy](https://www.youtube.com/watch?v=B40bteAMM_M&list=PLCC34OHNcOtr025c1kHSPrnP18YPB-NFi)
 - [netsetos ](https://www.youtube.com/watch?v=L6boPI7Zy60)
 - google
-- Stack Overflow
-- Pexels: All imagery on the site was sourced from Pexels.com
+
 ---
 ## Acknowledgement
 - My mentor Gereth McGirr from Code Institute as always has been very helpful with tips and advices.
