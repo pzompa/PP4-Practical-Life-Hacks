@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+<!-- Message -->
 <div class="container">
         {% if messages %}
     <div class="messages">
@@ -13,6 +14,7 @@
         {% endfor %}
     </div>
     {% endif %}
+    <!-- Edit hack form -->
     <form method="post" class="form mb-5" enctype="multipart/form-data">
         <h1 class='text-center'>Edit Hack</h1>
         {{ form | crispy }}

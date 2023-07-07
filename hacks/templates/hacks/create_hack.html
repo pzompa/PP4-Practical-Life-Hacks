@@ -5,12 +5,14 @@
 {% endblock %}
 
 {% block content %}
+<!-- Message -->
 <div class="container">
     {% if messages %}
     {% for message in messages %}
         {{ message }}
     {% endfor %}
 {% endif %}
+    <!-- Create Hack form -->
     <form method="post" class="form mb-5" enctype="multipart/form-data">
         <h1 class='text-center'>Add Hack</h1>
         {{ form | crispy }}
