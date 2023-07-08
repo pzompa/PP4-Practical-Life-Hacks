@@ -11,8 +11,8 @@
 3. [Validator Testing](#validator-tesing)
 4. [PEP8 Testing](#pep8-testing)
 5. [Wavetest](#wavetest)
-5. [Lighthouse Testing](#lighthouse-testing)
-6. [Manual Testing](#manual-testing)
+6. [Lighthouse Testing](#lighthouse-testing)
+7. [Manual Testing](#manual-testing)
 
 ---
 ## Functional Testing
