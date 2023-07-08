@@ -33,9 +33,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-pzompa-pp4practicallife-x89vc4kn2v2.ws-eu100.gitpod.io',
-    'https://8000-pzompa-pp4practicallife-x89vc4kn2v2.ws-eu101.gitpod.io',
-    'https://9000-pzompa-pp4practicallife-x89vc4kn2v2.ws-eu101.gitpod.io'
+    'https://8000-pzompa-pp4practicallife-x89vc4kn2v2.ws-eu101.gitpod.io'
     ]
 
 
