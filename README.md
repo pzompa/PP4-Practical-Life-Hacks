@@ -84,7 +84,7 @@ This project was developed based on agile methodologies.
 
 #### EPIC : Authentication
 
-- This Epic includes all the user storis relating to , user being able to register, login and after authentication can access contents and perform specific actions.
+- This Epic includes all the user stories relating to , user being able to register, login and after authentication can access contents and perform specific actions.
 - By tying actions and activities to specific authenticated identities, a system can maintain an audit trail of what each user does.
 
 #### EPIC : Stand alone pages
@@ -152,7 +152,8 @@ The following user stories were completed.
 - As a developer, I need to create the footer with social media links so that people can know more about the app
 
 - As a developer, I need to create the navbar so that users can navigate to any pages on  the website from any device
-- As a developer, I need to create a search function where the user can easily serach for a hack based on title, description or a word without having to search the whole hacks.
+
+- As a developer, I need to create a search function where the user can easily search for a hack based on title, usernamen, description or a word without having to search the whole hacks.
 
 ##### EPIC : Authentication
 
@@ -175,12 +176,11 @@ The following user stories were completed.
 
 ##### EPIC : Hacks
 
-- As a Site User, I can input my add a Hack onto the app through an easy to use interface so that I can share them with other users.
+- As a Site User, I can create a new Hack through an easy to use interface so that I can share them with other users.
 
-- As a Site User, I can edit and delete my Hacks that I have created so that I can easily make changes without having to start over.
+- As a Site User, I can edit and delete my Hacks that I have created so that I can easily make changes.
 
-- As a user, I would like to receive feedback when I create a Hack or edit so I know it was completed successfully
-
+- As a user, I would like to receive feedback when I create a Hack or edit so I know it was completed successfully.
 
 - As a Site User I can view my Favorited Hacks so I can find them easily in the one location.
 
@@ -198,7 +198,7 @@ The following user stories were completed.
 - As a user, I can like a hack after loggin in.
 - As a user, I can remove my like from a hack.
 - As a user, I can see how many likes and comments a hack has.
-- If a user is not logged in the user will be directed to log in or signup
+- If a user is not logged in the user will be directed to log in or signup page.
 
 
 ##### EPIC : Deployment
@@ -347,8 +347,9 @@ These fonts were imported via Google Fonts.
 - django-extensions==3.2.3
 - django-richtextfield==1.6.1
 - django-tinymce4-lite==1.8.0
+- docutils==0.20.1
 - gunicorn==20.1.0
-- idna==3.4
+- vidna==3.4
 - jsmin==3.0.1
 - mypy-extensions==1.0.0
 - oauthlib==3.2.2
@@ -414,7 +415,7 @@ The diagram below details the database schema.
 ![](/docs/readme_images/header1.png)
 
 ### Navigation menu:
-![](/docs/readme_images/header.png)
+![](/docs/readme_images/header3.png)
 
 - The nav menu is present at the top of every page and include links to all the other pages.
 - Navigation bar is responsive and collapsing in hamburger menu for mobile screens.
@@ -427,6 +428,7 @@ When a user is not logged in:
 
 When a user is logged in:
 - The nav bar shows Home, Browse Hacks, Add hack, Add to Favorite and Logout menu
+- The nav bar shows also the name of user logged in.
 - More option such as My favorite Hacks become available on the menu bar
 
 
@@ -544,7 +546,7 @@ The Images were taken from pexels.
 ---
 ## Acknowledgement
 - My mentor Gereth McGirr from Code Institute as always has been very helpful with tips and advices.
-- My Family for their patience, support.
+- My Family for their patience and support.
 
 
 

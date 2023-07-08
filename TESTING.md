@@ -289,7 +289,8 @@
 1. if the user is not logged in, the user cannot comment on a Hack
 2. if the user is not logged inand be the creator of the comment, the user cannot delete the comment
 
-### Validator Tesing
+---
+## Validator Testing
 - Homepage
 ![](/docs/testing_images/Homepage.png)
 - Browsehack
@@ -319,7 +320,8 @@
 - 404 
 ![](/docs/testing_images/404.png)
 
-### PEP8 Testing
+---
+## PEP8 Testing
 
 - hacks-view
 ![](/docs/testing_images/hacks-views.png)
@@ -340,7 +342,6 @@
 ![](/docs/testing_images/wavetest.png)
 
 ---
-
 ## Lighthouse Testing
 - Lighthouse report showed areas for improvement on SEO.  Warnings were coming from the use of an embedded iframe's javascript and cloudfarte CDN. Unfortunately I did not find a way to improve this.
 
